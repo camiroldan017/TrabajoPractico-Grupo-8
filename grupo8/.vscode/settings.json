@@ -1,0 +1,27 @@
+{
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "c:\\Users\\alero\\Downloads\\librerias\\antlr-2.7.7.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\byte-buddy-1.10.7.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\classmate-1.5.1.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\dom4j-2.1.1.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\FastInfoset-1.2.15.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\hibernate-commons-annotations-5.1.0.Final.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\hibernate-core-5.4.11.Final.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\istack-commons-runtime-3.0.7.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\jandex-2.1.1.Final.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\javassist-3.24.0-GA.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\javax.activation-api-1.2.0.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\javax.persistence-api-2.2.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\jaxb-api-2.3.1.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\jaxb-runtime-2.3.1.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\jboss-logging-3.3.2.Final.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\jboss-transaction-api_1.2_spec-1.1.1.Final.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\mysql-connector-java-8.0.19.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\stax-ex-1.8.jar",
+        "c:\\Users\\alero\\Downloads\\librerias\\txw2-2.3.1.jar"
+    ]
+}
