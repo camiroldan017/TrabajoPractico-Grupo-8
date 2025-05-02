@@ -12,16 +12,18 @@ public class Turno {
     private Cliente cliente;
     private Empleado empleado;
     private Servicio servicio;
+    private Sucursal sucursal;
 
     public Turno(){}
 
-    public Turno(LocalDate fecha, LocalTime hora, String estado, Cliente cliente, Empleado empleado, Servicio servicio) {
+    public Turno(LocalDate fecha, LocalTime hora, String estado, Cliente cliente, Empleado empleado, Servicio servicio, Sucursal sucursal) {
         this.fecha = fecha;
         this.hora = hora;
         this.estado = estado;
         this.cliente = cliente;
         this.empleado = empleado;
         this.servicio = servicio;
+        this.sucursal = sucursal;
     }
 
     public long getIdTurno() {
@@ -78,9 +80,17 @@ public class Turno {
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
     }
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
     
     @Override
     public String toString() {
-        return "Turno{" + "idTurno=" + idTurno + ", fecha=" + fecha + ", hora=" + hora + ", estado='" + estado + '\'' + ", cliente=" + cliente + ", empleado=" + empleado + ", servicio=" + servicio + '}';
+        return "Turno{" + "idTurno=" + idTurno + ", fecha=" + fecha + ", hora=" + hora + ", estado='" + estado + '\'' + ", cliente=" + cliente + ", empleado=" + empleado + ", servicio=" + servicio + "sucursal=" + sucursal + '}';    
     }
 }
