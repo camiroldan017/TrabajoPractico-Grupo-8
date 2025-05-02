@@ -9,16 +9,18 @@ public abstract class Persona {
    protected String apellido;
    protected int dni;
    protected LocalDate fechaDeNacimiento;
+   protected Contacto contacto; // Se puede agregar un contacto a la persona, pero no es obligatorio
 
 
 
 public Persona(){}
 
-public Persona(String nombre, String apellido, int dni, LocalDate fechaDeNacimiento) {
+public Persona(String nombre, String apellido, int dni, LocalDate fechaDeNacimiento, Contacto contacto) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaDeNacimiento = fechaDeNacimiento;
+        this.contacto = contacto;
 }
 
     // Getters and Setters
@@ -48,9 +50,15 @@ public Persona(String nombre, String apellido, int dni, LocalDate fechaDeNacimie
     public int getDni() {
         return dni;
     }
- 
+    public void setContacto(Contacto contacto) {
+        this.contacto = contacto;
+    }
+    public Contacto getContacto() {
+        return contacto;
+    }
+    
     @Override
     public String toString() {
-        return "Persona{" + "idPersona=" + idPersona + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' + ", dni=" + dni + ", fechaDeNacimiento=" + fechaDeNacimiento + '}';
+        return "Persona{" + "idPersona=" + idPersona + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' + ", dni=" + dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", contacto=" + contacto + '}';
     }
 }

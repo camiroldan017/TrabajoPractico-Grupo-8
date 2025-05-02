@@ -11,8 +11,8 @@ public class Cliente extends Persona{
 	} // siempre hay que implementar el constructor vacío
 
 	// no va el id en el constructor por ser autoincrementable
-	public Cliente(String apellido, String nombre, int dni, LocalDate fechaDeNacimiento, Set<Turno> turnos) {
-		super(apellido, nombre, dni, fechaDeNacimiento); // llama al constructor de la clase padre
+	public Cliente(String apellido, String nombre, int dni, LocalDate fechaDeNacimiento,Contacto contacto, Set<Turno> turnos) {
+		super(apellido, nombre, dni, fechaDeNacimiento, contacto); // llama al constructor de la clase padre
 		this.turnos = turnos; // inicializa la lista de turnos
 
 	}

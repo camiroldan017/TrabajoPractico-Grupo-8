@@ -8,15 +8,16 @@ public class Empleado extends Persona{
     private long idEmpleado;
     private String legajo;
     private Set<Turno> turnos; // lista de turnos del empleado
+    private Set<Servicio> servicios; // lista de servicios que brinda el empleado
+    
+    public Empleado() {}
 
-    public Empleado() {
-    }
-
-    public Empleado(String nombre, String apellido, int dni, LocalDate fechaDeNacimiento, String legajo, Set<Turno> turnos) {
-        super(nombre, apellido, dni, fechaDeNacimiento);
+    public Empleado(String nombre, String apellido, int dni, LocalDate fechaDeNacimiento,Contacto contacto, String legajo, Set<Turno> turnos, Set<Servicio> servicios) {
+        super(nombre, apellido, dni, fechaDeNacimiento, contacto); 
         this.legajo = legajo;
         this.turnos = turnos; // inicializa la lista de turnos
-    }
+        this.servicios = servicios; // inicializa la lista de servicios
+    }   
 
     public long getIdEmpleado() {
         return idEmpleado;
@@ -42,8 +43,16 @@ public class Empleado extends Persona{
         this.turnos = turnos;
     }
 
+    public Set<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(Set<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+
     @Override
     public String toString() {
-        return "Empleado{" + "idEmpleado=" + idEmpleado + ", legajo='" + legajo + '\'' + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' + ", dni=" + dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", turnos=" + turnos + '}';
+        return "Empleado{" + "idEmpleado=" + idEmpleado + ", legajo='" + legajo + '\'' + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' + ", dni=" + dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", turnos=" + turnos + ", servicios=" + servicios + '}';
     }
 }
