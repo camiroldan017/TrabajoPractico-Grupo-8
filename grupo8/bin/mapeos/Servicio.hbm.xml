@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "../hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping> 
+    <class name="datos.Servicio" table="servicio">
+        <id name="idServicio" column="idServicio">
+            <generator class="identity"/>
+        </id>
+    
+        <property column="nombre" name="nombre" type="string"/>
+        <property column="duracion" name="duracion" type="string"/>
+    
+        <many-to-one name="sucursal" class="datos.Sucursal" column="idSucursal" not-null="true"/>
+    
+        <set name="empleados" table="empleado_servicio" inverse="true">
+            <key column="idServicio"/>
+            <many-to-many class="datos.Empleado" column="idEmpleado"/>
+        </set>
+
+        <set name="turnos" inverse="true" cascade="all">
+            <key column="idServicio"/>
+            <one-to-many class="datos.Turno"/>
+        </set>
+
+
+    </class>
+
+</hibernate-mapping>

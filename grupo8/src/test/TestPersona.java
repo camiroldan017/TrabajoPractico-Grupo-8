@@ -12,7 +12,7 @@ public class TestPersona {
     public static void main(String[] args) {
         // Crear una nueva persona
         PersonaABM personaABM = new PersonaABM();
-        
+        /* 
         System.out.println("Creando una nueva persona...");
         long idPersona = personaABM.agregarPersona("Juan", "Pérez", 12345678,
         Date.valueOf(LocalDate.now()));
@@ -42,8 +42,8 @@ public class TestPersona {
 
         
         // Eliminar una persona
-        personaABM.eliminarPersona(idPersona);
-        System.out.println("Persona eliminada con ID: " + idPersona);
+        //personaABM.eliminarPersona(idPersona);
+        // System.out.println("Persona eliminada con ID: " + idPersona);
         
 
         
@@ -51,11 +51,11 @@ public class TestPersona {
         long idCliente = personaABM.agregarCliente("Ana", "Gómez", 23456789,
         Date.valueOf(LocalDate.of(1992, 11, 17)));
         System.out.println("Cliente agregado con ID: " + idCliente);
-        
+        */
         SucursalABM sucursalABM = new SucursalABM();
         System.out.println("Creando un nuevo empleado...");
-        long idEmpleado = personaABM.agregarEmpleado("Carlos", "Ruiz", 34567890,
-                Date.valueOf(LocalDate.of(1996, 12, 05)), "A123",sucursalABM.traerSucursal(1L));
+        long idEmpleado = personaABM.agregarEmpleado("Carlos", "Ruiz", 43567890,
+                Date.valueOf(LocalDate.of(1996, 12, 05)), "A123",sucursalABM.traerSucursal(2L));
         System.out.println("Empleado agregado con ID: " + idEmpleado);
 
     }

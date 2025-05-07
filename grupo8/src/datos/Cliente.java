@@ -1,41 +1,36 @@
 package datos;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.Set;
 
-public class Cliente extends Persona{
-	private long idCliente;
-	private Set<Turno> turnos; // lista de turnos del cliente
-	
-	public Cliente() {
-	} // siempre hay que implementar el constructor vacío
+public class Cliente extends Persona {
+    private long idCliente;
+    private Set<Turno> turnos;
 
-	// no va el id en el constructor por ser autoincrementable
-	public Cliente(String apellido, String nombre, int dni, LocalDate fechaDeNacimiento,Contacto contacto, Set<Turno> turnos) {
-		super(apellido, nombre, dni, fechaDeNacimiento, contacto); // llama al constructor de la clase padre
-		this.turnos = turnos; // inicializa la lista de turnos
+    public Cliente() {
+    }
 
-	}
+    public Cliente( String nombre, String apellido, int dni, Date fechaNacimiento) {
+        super(nombre, apellido, dni, fechaNacimiento);
+    
+    }
 
-	public long getIdCliente() {
-		return idCliente;
-	}
+    public long getIdCliente() {
+        return idCliente;
+    }
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    public Set<Turno> getTurnos() {
+        return turnos;
+    }
+    public void setTurnos(Set<Turno> turnos) {
+        this.turnos = turnos;
+    }
 
-	// siempre va protected, para que no sea modificado
-	protected void setIdCliente(long idCliente) {
-		this.idCliente = idCliente;
-	}
+    @Override 
+    public String toString() {
+        return "Cliente [idCliente=" + idCliente + ", turnos=" + turnos + "]";
+    }
 
-	public Set<Turno> getTurnos() {
-		return turnos;
-	}
-
-	public void setTurnos(Set<Turno> turnos) {
-		this.turnos = turnos;
-	}
-	
-	@Override
-	public String toString() {
-		return "Cliente{" + "idCliente=" + idCliente + '\'' + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' + ", dni=" + dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", Turnos=" + turnos + '}';
-	}
 }

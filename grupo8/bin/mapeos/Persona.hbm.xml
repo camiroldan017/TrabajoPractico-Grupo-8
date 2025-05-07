@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "../hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="datos.Persona" table="persona">
+		<id column="idPersona" name="idPersona" type="long">
+			<generator class="identity" />
+		</id>
+        <property column="nombre" name="nombre" type="string" />
+		<property column="apellido" name="apellido" type="string" />
+		<property column="dni" name="dni" type="int" />
+		<property column="fechaNacimiento" name="fechaNacimiento" type="date" />
+
+        <joined-subclass name="datos.Cliente" table="cliente">
+            <key column="idCliente"/>
+            <set name="turnos" inverse="true" cascade="all">
+                <key column="idCliente"/>
+                <one-to-many class="datos.Turno"/>
+            </set>
+        </joined-subclass>
+
+        <joined-subclass name="datos.Empleado" table="empleado">
+            <key column="idEmpleado"/>
+            <property column="legajo" name="legajo" type="string"/>
+            <many-to-one name="sucursal" class="datos.Sucursal" column="idSucursal" not-null="true"/>
+    
+            <set name="turnos" inverse="true" cascade="all">
+                <key column="idEmpleado"/>
+                <one-to-many class="datos.Turno"/>
+            </set>
+    
+            <set name="servicios" table="empleado_servicio" cascade="all">
+                <key column="idEmpleado"/>
+                <many-to-many class="datos.Servicio" column="idServicio"/>
+            </set>
+        </joined-subclass>
+        
+	</class>
+</hibernate-mapping>
