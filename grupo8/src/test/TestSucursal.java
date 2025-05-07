@@ -1,6 +1,8 @@
 package test;
 
+import datos.Contacto;
 import datos.Sucursal;
+import negocio.ContactoABM;
 import negocio.SucursalABM;
 
 public class TestSucursal {
@@ -8,6 +10,8 @@ public class TestSucursal {
         SucursalABM sucursalABM = new SucursalABM();
         Sucursal sucursal = new Sucursal("Sucursal Centro");
         sucursalABM.agregarSucursal(sucursal); // Guardar en la BD antes de usarla
+        sucursalABM.agregarContactoASucursal(2L, null);
+       
 
         System.out.println(sucursalABM.traerSucursal(1l));
     }

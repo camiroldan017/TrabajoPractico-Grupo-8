@@ -10,8 +10,7 @@ public class Contacto {
     public Contacto() {
     }
 
-    public Contacto(long idContacto, String email, String telefono, String direccion) {
-        this.idContacto = idContacto;
+    public Contacto( String email, String telefono, String direccion) {
         this.email = email;
         this.telefono = telefono;
         this.direccion = direccion;

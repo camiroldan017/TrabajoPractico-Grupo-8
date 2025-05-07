@@ -1,6 +1,7 @@
 package negocio;
 
 import dao.SucursalDao;
+import datos.Contacto;
 import datos.Sucursal;
 import java.util.List;
 
@@ -40,5 +41,9 @@ public class SucursalABM {
         } else {
             throw new RuntimeException("Sucursal no encontrada con id: " + idSucursal);
         }
+    }
+
+       public void agregarContactoASucursal(long idSucursal, Contacto contacto) {
+        dao.agregarContactoASucursal(idSucursal, contacto);
     }
 }
