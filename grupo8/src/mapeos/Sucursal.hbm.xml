@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "../hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="datos.Sucursal" table="sucursal">
+        <id name="idSucursal" column="idSucursal">
+            <generator class="identity" />
+        </id>
+
+        <property name="nombre" column="nombre" type="string" />
+
+        <one-to-one name="contacto" class="datos.Contacto" cascade="all" constrained="false"
+            foreign-key="fk_sucursal_contacto" />
+
+        <set name="empleados" inverse="true" cascade="all">
+            <key column="idSucursal" not-null="false" />
+            <one-to-many class="datos.Empleado" />
+        </set>
+
+        <set name="servicios" inverse="true" cascade="all">
+            <key column="idSucursal" not-null="false" />
+            <one-to-many class="datos.Servicio" />
+        </set>
+
+        <set name="turnos" inverse="true" cascade="all">
+            <key column="idSucursal" not-null="false" />
+            <one-to-many class="datos.Turno" />
+        </set>
+    </class>
+
+</hibernate-mapping>

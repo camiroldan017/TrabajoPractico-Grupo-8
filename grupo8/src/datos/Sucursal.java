@@ -1,5 +1,6 @@
 package datos;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Sucursal {
@@ -7,23 +8,27 @@ public class Sucursal {
     private String nombre;
     private Contacto contacto;
     private Set<Empleado> empleados;
+    private Set<Servicio> servicios;
     private Set<Turno> turnos;
 
     public Sucursal() {
     }
 
-    public Sucursal(String nombre, Contacto contacto, Set<Empleado> empleados, Set<Turno> turnos) {
+    public Sucursal(String nombre) {
         this.nombre = nombre;
-        this.contacto = contacto;
-        this.empleados = empleados; // inicializa la lista de empleados
-        this.turnos = turnos; // inicializa la lista de turnos
+        this.contacto = null;
+        this.empleados = new HashSet<>();
+        ;
+        this.servicios = new HashSet<>();
+        this.turnos = new HashSet<>();
+        ;
     }
 
     public long getIdSucursal() {
         return idSucursal;
     }
 
-    protected void setIdSucursal(long idSucursal) {
+    public void setIdSucursal(long idSucursal) {
         this.idSucursal = idSucursal;
     }
 
@@ -51,6 +56,14 @@ public class Sucursal {
         this.empleados = empleados;
     }
 
+    public Set<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(Set<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+
     public Set<Turno> getTurnos() {
         return turnos;
     }
@@ -61,6 +74,7 @@ public class Sucursal {
 
     @Override
     public String toString() {
-        return "Sucursal{" + "idSucursal=" + idSucursal + ", nombre='" + nombre + '\n' + ", contacto=" + contacto + ", empleados=" + empleados + ", turnos=" + turnos +'}';
+        return "Sucursal{" +
+                "idSucursal=" + idSucursal + ", nombre='" + nombre + '\'' + ", contacto=" + contacto + '}';
     }
 }
