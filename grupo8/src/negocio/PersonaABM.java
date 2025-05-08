@@ -20,12 +20,8 @@ public class PersonaABM {
         return persona;
     }
 
-    public Persona traerPersonaPorDni(int dni) throws Exception {
-        Persona persona = dao.traerPersonaPorDni(dni);
-        if (persona == null) {
-            throw new Exception("No se encontró una persona con el DNI: " + dni);
-        }
-        return persona;
+    public Persona traerPersonaPorDni(int dni) {
+        return dao.traerPersonaPorDni(dni);
     }
 
     public List<Persona> traerPersonas() throws Exception {
@@ -36,12 +32,14 @@ public class PersonaABM {
         return lista;
     }
 
+    /* SE COMENTA PORQUE NO SE UTILIZA EN EL PROYECTO
     public long agregarPersona(String nombre, String apellido, int dni, Date fechaNacimiento) throws Exception {
         traerPersonaPorDni(dni);
         Persona persona = new Persona(nombre, apellido, dni, fechaNacimiento);
         dao.guardarPersona(persona);
         return persona.getIdPersona();
     }
+    */
 
     public void modificarPersona(Persona persona, String nombre, String apellido, int dni, Date fechaNacimiento)
             throws Exception {
@@ -70,7 +68,7 @@ public class PersonaABM {
     }
 
     public long agregarCliente(String nombre, String apellido, int dni, Date fechaNacimiento) throws Exception {
-        if(traerPersonaPorDni(dni).getDni() == dni) {
+        if(traerPersonaPorDni(dni) != null) {
             throw new Exception("Ya existe un cliente con el DNI: " + dni);
         }
         Cliente cliente = new Cliente(nombre, apellido, dni, fechaNacimiento);
@@ -128,6 +126,7 @@ public class PersonaABM {
         return dao.traerClientePorId(idCliente);
     }
 
+    /*TRAER QUE NO SE UTILIZA EN EL PROYECTO
     public List<Empleado> traerEmpleados() throws Exception {
         List<Empleado> lista = dao.traerTodosLosEmpleados();
         if (lista == null || lista.isEmpty()) {
@@ -143,4 +142,5 @@ public class PersonaABM {
         }
         return lista;
     }
+    */
 }

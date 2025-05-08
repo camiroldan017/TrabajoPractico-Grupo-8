@@ -121,17 +121,5 @@ public class PersonaDao {
         return cliente;
     }
 
-    public Persona traerEmpleadoPorLegajo(String legajo) { 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Persona empleado = null;
-        try {
-            empleado = session.createQuery("from Empleado where legajo = :legajo", Persona.class)
-                    .setParameter("legajo", legajo).uniqueResult();
-        } finally {
-            session.close();
-        }
-        return empleado;
-        
-    }
 
 }
