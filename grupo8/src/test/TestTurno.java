@@ -18,40 +18,57 @@ public class TestTurno {
         PersonaABM personaABM2 = new PersonaABM();
         ServicioABM servicioABM = new ServicioABM();
         SucursalABM sucursalABM = new SucursalABM();
-        
-        // Creamos 4 turnos nuevos
-        try{
-            Turno turno1 = new Turno(Date.valueOf(LocalDate.of(2025, 6, 10)), LocalTime.of(10, 00, 00), "confirmado",
-            personaABM.traerCliente(13L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(3L),
-            sucursalABM.traerSucursal(11L));
-            
-           
-            Turno turno2 = new Turno(Date.valueOf(LocalDate.of(2025, 7, 23)), LocalTime.of(14, 30, 00), "confirmado",
-            personaABM.traerCliente(14L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(4L),
-            sucursalABM.traerSucursal(11L));
-            Turno turno3 = new Turno(Date.valueOf(LocalDate.of(2025, 8, 17)), LocalTime.of(18, 45, 00), "confirmado",
-            personaABM.traerCliente(15L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(5L),
-            sucursalABM.traerSucursal(11L));
-            Turno turno4 = new Turno(Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), "confirmado",
-            personaABM.traerCliente(15L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(4L),
-            sucursalABM.traerSucursal(11L));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } 
 
-        System.out.println("\n");
-
-        // Agregamos los turnos a la BD
+        // Creamos 4 turnos y los agregamos a la BD
+        // Turno 1
         try {
+            Turno turno1 = new Turno(Date.valueOf(LocalDate.of(2025, 6, 10)), LocalTime.of(10, 00, 00), "confirmado",
+            personaABM.traerCliente(6L), personaABM2.traerEmpleado(5L), servicioABM.traerServicio(1L),
+            sucursalABM.traerSucursal(2L));
             turnoABM.agregarTurno(turno1);
+        } catch (Exception e) {
+            // TODO: handle exception
+            // Manejamos la excepción y mostramos un mensaje en consola
+            System.out.println("ERROR AL QUERER AGREGAR EL TURNO: " + e.getMessage());
+        }
+
+        // Turno 2
+        try {
+            Turno turno2 = new Turno(Date.valueOf(LocalDate.of(2025, 7, 23)), LocalTime.of(14, 30, 00), "confirmado",
+            personaABM.traerCliente(7L), personaABM2.traerEmpleado(5L), servicioABM.traerServicio(2L),
+            sucursalABM.traerSucursal(2L));
             turnoABM.agregarTurno(turno2);
+        } catch (Exception e) {
+            // TODO: handle exception
+            // Manejamos la excepción y mostramos un mensaje en consola
+            System.out.println("ERROR AL QUERER AGREGAR EL TURNO: " + e.getMessage());
+        }
+
+        // Turno 3
+        try {
+            Turno turno3 = new Turno(Date.valueOf(LocalDate.of(2025, 8, 17)), LocalTime.of(18, 45, 00), "confirmado",
+            personaABM.traerCliente(8L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(3L),
+            sucursalABM.traerSucursal(2L));
             turnoABM.agregarTurno(turno3);
+        } catch (Exception e) {
+            // TODO: handle exception
+            // Manejamos la excepción y mostramos un mensaje en consola
+            System.out.println("ERROR AL QUERER AGREGAR EL TURNO: " + e.getMessage());
+        }
+
+        // Turno 4
+        try {
+            Turno turno4 = new Turno(Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), "confirmado",
+            personaABM.traerCliente(8L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(2L),
+            sucursalABM.traerSucursal(2L));
             turnoABM.agregarTurno(turno4);
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
             System.out.println("ERROR AL QUERER AGREGAR EL TURNO: " + e.getMessage());
         }
+
+        System.out.println("\n");
 
         // Intentamos reservar un turno para un servicio que ya tiene un turno reservado para la fecha
         // y hora que se desea reservar
