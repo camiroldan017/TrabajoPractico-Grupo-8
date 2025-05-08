@@ -20,18 +20,24 @@ public class TestTurno {
         SucursalABM sucursalABM = new SucursalABM();
         
         // Creamos 4 turnos nuevos
-        Turno turno1 = new Turno(Date.valueOf(LocalDate.of(2025, 6, 10)), LocalTime.of(10, 00, 00), "confirmado",
-                    personaABM.traerCliente(13L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(3L),
-                    sucursalABM.traerSucursal(11L));
-        Turno turno2 = new Turno(Date.valueOf(LocalDate.of(2025, 7, 23)), LocalTime.of(14, 30, 00), "confirmado",
-                    personaABM.traerCliente(14L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(4L),
-                    sucursalABM.traerSucursal(11L));
-        Turno turno3 = new Turno(Date.valueOf(LocalDate.of(2025, 8, 17)), LocalTime.of(18, 45, 00), "confirmado",
-                    personaABM.traerCliente(15L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(5L),
-                    sucursalABM.traerSucursal(11L));
-        Turno turno4 = new Turno(Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), "confirmado",
-                    personaABM.traerCliente(15L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(4L),
-                    sucursalABM.traerSucursal(11L));
+        try{
+            Turno turno1 = new Turno(Date.valueOf(LocalDate.of(2025, 6, 10)), LocalTime.of(10, 00, 00), "confirmado",
+            personaABM.traerCliente(13L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(3L),
+            sucursalABM.traerSucursal(11L));
+            
+           
+            Turno turno2 = new Turno(Date.valueOf(LocalDate.of(2025, 7, 23)), LocalTime.of(14, 30, 00), "confirmado",
+            personaABM.traerCliente(14L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(4L),
+            sucursalABM.traerSucursal(11L));
+            Turno turno3 = new Turno(Date.valueOf(LocalDate.of(2025, 8, 17)), LocalTime.of(18, 45, 00), "confirmado",
+            personaABM.traerCliente(15L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(5L),
+            sucursalABM.traerSucursal(11L));
+            Turno turno4 = new Turno(Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), "confirmado",
+            personaABM.traerCliente(15L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(4L),
+            sucursalABM.traerSucursal(11L));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } 
 
         System.out.println("\n");
 

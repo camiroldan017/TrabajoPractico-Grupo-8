@@ -11,13 +11,29 @@ public class TestSucursal {
     public static void main(String[] args) {
         SucursalABM sucursalABM = new SucursalABM();
         //ContactoABM contactoABM = new ContactoABM();
-        ServicioABM servicioABM = new ServicioABM();
+        //ServicioABM servicioABM = new ServicioABM();
 
-        //Sucursal sucursal = new Sucursal("Sucursal Este");
-        //sucursalABM.agregarSucursal(sucursal); // Guardar en la BD antes de usarla
-        //sucursalABM.agregarContactoASucursal(2L, contactoABM.traerContacto(1L));
-        //sucursalABM.agregarServicioASucursal(4L, servicioABM.traerServicio(1L));
+        try {
+            // Traer una sucursal por ID
+            long idSucursal = sucursalABM.agregarSucursal("Sucursal Norte");
+            System.out.println("Sucursal agregada con ID: " + idSucursal);
+           
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-        //System.out.println(sucursalABM.traerSucursal(1l));
+        try{
+            System.out.println("Lista de sucursales:" + sucursalABM.traerSucursales());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try	 {
+            sucursalABM.eliminarSucursal(2);
+            System.out.println("Sucursal eliminado con ID: " + 2);
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -9,34 +9,89 @@ import java.util.List;
 public class SucursalABM {
     private SucursalDao dao = new SucursalDao();
 
-    public Sucursal traerSucursal(long idSucursal) {
+    public Sucursal traerSucursal(long idSucursal) throws Exception {
+        // Traemos la sucursal por ID
+        Sucursal sucursal = dao.traerSucursalPorId(idSucursal);
+
+        // Si la sucursal no existe, lanzamos una excepción
+       if(sucursal == null) {
+            throw new Exception("La sucursal no puede ser nula.");
+        }
         return dao.traerSucursalPorId(idSucursal);
     }
 
-    public List<Sucursal> traerSucursales() {
+    public List<Sucursal> traerSucursales() throws Exception {
+        // Traemos todas las sucursales de la base de datos y las guardamos en una lista
+        List<Sucursal> lista = dao.traerTodasLasSucursales();
+
+        if(lista == null || lista.isEmpty()) {
+            // Si la lista de sucursales está vacía, lanzamos una excepción
+            throw new Exception("No hay sucursales registradas.");
+        }
         return dao.traerTodasLasSucursales();
     }
 
-    public long agregarSucursal(String nombre) {
+    public long agregarSucursal(String nombre) throws Exception {
+        // Creamos una nueva sucursal
         Sucursal sucursal = new Sucursal(nombre);
-        dao.guardarSucursal(sucursal);
-        return sucursal.getIdSucursal();
-    }
 
-    public long agregarSucursal(Sucursal sucursal) {
-        if (sucursal == null) {
-            throw new IllegalArgumentException("La sucursal no puede ser nula.");
+        // El nombre de la sucursal no puede ser nulo o vacío
+        if(nombre == null || nombre.isEmpty()) {
+            throw new Exception ("El nombre de la sucursal no puede ser nulo o vacío.");
         }
+
+        // Guardamos la sucursal en la base de datos
         dao.guardarSucursal(sucursal);
+
+        // Verificamos si la sucursal se guardó correctamente
+        System.out.println("La sucursal se ha guardado correctamente: " + sucursal);
         return sucursal.getIdSucursal();
     }
 
-    public void modificarSucursal(Sucursal sucursal) {
+    public long agregarSucursal(Sucursal sucursal) throws Exception {
+        if (sucursal == null) {
+            throw new Exception("La sucursal no puede ser nula.");
+        }
+
+        // Guardamos la sucursal en la base de datos
+        dao.guardarSucursal(sucursal);
+
+        // Verificamos si la sucursal se guardó correctamente
+        System.out.println("La sucursal se ha guardado correctamente: " + sucursal);
+        return sucursal.getIdSucursal();
+    }
+
+    public void modificarSucursal(Sucursal sucursal, String nombreNuevo, Contacto contactoNuevo) throws Exception {
+        // Verificamos si la sucursal es nula, de ser así, lanzamos una excepción
+        if (sucursal == null) {
+            throw new Exception ("La sucursal no puede ser nula.");
+        }
+
+        //Verificamos si el nombre nuevo es nulo o vacío
+        if(nombreNuevo == null || nombreNuevo.isEmpty()) {
+            throw new Exception("El nombre de la sucursal no puede ser nulo o vacío.");
+        }
+
+        // Verificamos si el contacto es nulo, de ser así, lanzamos una excepción
+        if (contactoNuevo == null) {
+            throw new Exception("El contacto no puede ser nulo.");
+        }
+
+        // Modificamos la sucursal con los nuevos datos
+        sucursal.setNombre(nombreNuevo);
+        sucursal.setContacto(contactoNuevo);
+    
+        //Se realiza la actualización de la sucursal en la base de datos
         dao.actualizarSucursal(sucursal);
+
+        System.out.println("La sucursal se ha modificado correctamente: " + sucursal);
     }
 
     public void eliminarSucursal(long idSucursal) {
+        //Traemos la sucursal por ID
         Sucursal sucursal = dao.traerSucursalPorId(idSucursal);
+
+        // Si la sucursal no existe, lanzamos una excepción
         if (sucursal != null) {
             dao.eliminarSucursal(sucursal);
         } else {
@@ -44,7 +99,7 @@ public class SucursalABM {
         }
     }
 
-       public void agregarContactoASucursal(long idSucursal, Contacto contacto) {
+    public void agregarContactoASucursal(long idSucursal, Contacto contacto) {
         dao.agregarContactoASucursal(idSucursal, contacto);
     }
 
