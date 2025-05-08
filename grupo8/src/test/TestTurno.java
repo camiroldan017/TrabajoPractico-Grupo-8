@@ -21,17 +21,17 @@ public class TestTurno {
         
         // Creamos 4 turnos nuevos
         Turno turno1 = new Turno(Date.valueOf(LocalDate.of(2025, 6, 10)), LocalTime.of(10, 00, 00), "confirmado",
-                    personaABM.traerCliente(6L), personaABM2.traerEmpleado(5L), servicioABM.traerServicio(1L),
-                    sucursalABM.traerSucursal(2L));
+                    personaABM.traerCliente(13L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(3L),
+                    sucursalABM.traerSucursal(11L));
         Turno turno2 = new Turno(Date.valueOf(LocalDate.of(2025, 7, 23)), LocalTime.of(14, 30, 00), "confirmado",
-                    personaABM.traerCliente(7L), personaABM2.traerEmpleado(5L), servicioABM.traerServicio(2L),
-                    sucursalABM.traerSucursal(2L));
+                    personaABM.traerCliente(14L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(4L),
+                    sucursalABM.traerSucursal(11L));
         Turno turno3 = new Turno(Date.valueOf(LocalDate.of(2025, 8, 17)), LocalTime.of(18, 45, 00), "confirmado",
-                    personaABM.traerCliente(8L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(3L),
-                    sucursalABM.traerSucursal(2L));
+                    personaABM.traerCliente(15L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(5L),
+                    sucursalABM.traerSucursal(11L));
         Turno turno4 = new Turno(Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), "confirmado",
-                    personaABM.traerCliente(8L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(2L),
-                    sucursalABM.traerSucursal(2L));
+                    personaABM.traerCliente(15L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(4L),
+                    sucursalABM.traerSucursal(11L));
 
         System.out.println("\n");
 
@@ -51,8 +51,8 @@ public class TestTurno {
         // y hora que se desea reservar
         try {
             turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2025, 6, 10)), LocalTime.of(10, 00, 00), "pendiente",
-                personaABM.traerCliente(8L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(1L),
-                sucursalABM.traerSucursal(2L));
+                personaABM.traerCliente(13L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(3L),
+                sucursalABM.traerSucursal(11L));
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
@@ -63,8 +63,8 @@ public class TestTurno {
         // servicio en la fecha y hora que desea reservar
         try {
             turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2025, 7, 23)), LocalTime.of(14, 30, 00), "pendiente",
-                personaABM.traerCliente(7L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(1L),
-                sucursalABM.traerSucursal(2L));
+                personaABM.traerCliente(14L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(3L),
+                sucursalABM.traerSucursal(11L));
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
@@ -75,8 +75,8 @@ public class TestTurno {
         // para esa fecha y hora
         try {
             turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2025, 8, 17)), LocalTime.of(18, 45, 00), "pendiente",
-                personaABM.traerCliente(6L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(2L),
-                sucursalABM.traerSucursal(2L));
+                personaABM.traerCliente(13L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(4L),
+                sucursalABM.traerSucursal(11L));
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola

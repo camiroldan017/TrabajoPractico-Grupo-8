@@ -10,54 +10,107 @@ import negocio.SucursalABM;
 
 public class TestPersona {
     public static void main(String[] args) {
-        // Crear una nueva persona
+
         PersonaABM personaABM = new PersonaABM();
-        /* 
-        System.out.println("Creando una nueva persona...");
-        long idPersona = personaABM.agregarPersona("Juan", "Pérez", 12345678,
-        Date.valueOf(LocalDate.now()));
-        System.out.println("Persona agregada con ID: " + idPersona);
-        
-        // Traer todas las personas
-        List<Persona> personas = personaABM.traerPersonas();
-        if (personas != null && !personas.isEmpty()) {
-        System.out.println("Lista de personas:");
-        for (Persona p : personas) {
-        System.out.println(p);
-        }
-        } else {
-        System.out.println("No hay personas registradas.");
-        }
-        
-
-        // Modificar una persona
-        
-        Persona persona = personaABM.traerPersona(idPersona);
-        if (persona != null) {
-        persona.setNombre("Juan Carlos");
-        personaABM.modificarPersona(persona);
-        System.out.println("Persona modificada: " + persona);
-        }
-        
-
-        
-        // Eliminar una persona
-        //personaABM.eliminarPersona(idPersona);
-        // System.out.println("Persona eliminada con ID: " + idPersona);
-        
-
+        SucursalABM sucursalABM = new SucursalABM();
         
         System.out.println("Creando un nuevo cliente...");
-        long idCliente = personaABM.agregarCliente("Ana", "Gómez", 23456789,
-        Date.valueOf(LocalDate.of(1992, 11, 17)));
+        
+        long idCliente;
+        
+        try {
+        idCliente = personaABM.agregarCliente("Sofia", "Gonzales", 25555513,
+        Date.valueOf(LocalDate.of(2002, 6, 10)));
         System.out.println("Cliente agregado con ID: " + idCliente);
-        */
-        SucursalABM sucursalABM = new SucursalABM();
+        } catch (Exception e) {
+        // TODO Auto-generated catch block
+        System.out.println(e.getMessage());
+        }
+        
+        try {
+        idCliente = personaABM.agregarCliente("Tiago", "Domenech", 22466555,
+        Date.valueOf(LocalDate.of(1997, 4, 20)));
+        System.out.println("Cliente agregado con ID: " + idCliente);
+        } catch (Exception e) {
+        // TODO Auto-generated catch block
+        System.out.println(e.getMessage());
+        }
+        
         System.out.println("Creando un nuevo empleado...");
-        long idEmpleado = personaABM.agregarEmpleado("Carlos", "Ruiz", 43567890,
-                Date.valueOf(LocalDate.of(1996, 12, 05)), "A123",sucursalABM.traerSucursal(2L));
+        
+        long idEmpleado;
+        
+        try {
+        idEmpleado = personaABM.agregarEmpleado("Sofia", "Lanceti", 19567890,
+        Date.valueOf(LocalDate.of(1999, 10, 15)), "A345",
+        sucursalABM.traerSucursal(11L));
         System.out.println("Empleado agregado con ID: " + idEmpleado);
-
+        } catch (Exception e) {
+        // TODO Auto-generated catch block
+        System.out.println(e.getMessage());
+        }
+        
+        try {
+        idEmpleado = personaABM.agregarEmpleado("Car", "Rodri",25034211,
+        Date.valueOf(LocalDate.of(2003, 5, 05)), "A992",
+        sucursalABM.traerSucursal(13L));
+        System.out.println("Empleado agregado con ID: " + idEmpleado);
+        } catch (Exception e) {
+        // TODO Auto-generated catch block
+        System.out.println(e.getMessage());
+        }
+        
+        
+        // Traer todas las personas
+        try {
+        List<Persona> personas = personaABM.traerPersonas();
+        System.out.println("Lista de personas:" + personas);
+        } catch (Exception e) {
+        // TODO Auto-generated catch block
+        System.out.println(e.getMessage());
+        }
+        
+        //intentar agregar un Empleado con un legajo ya existente
+        try {
+            idEmpleado = personaABM.agregarEmpleado("Caro", "Rodriguez", 25555513,
+                    Date.valueOf(LocalDate.of(2003, 5, 05)), "A992",
+                    sucursalABM.traerSucursal(13L));
+            System.out.println("Empleado agregado con ID: " + idEmpleado);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            System.out.println(e.getMessage());
+        }
+        
+        //intentar agregar un cliente con un dni ya existente
+        try {
+            idCliente = personaABM.agregarCliente("Sofia", "Gonzales", 25555513,
+                    Date.valueOf(LocalDate.of(2002, 6, 10)));
+            System.out.println("Cliente agregado con ID: " + idCliente);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            System.out.println(e.getMessage());
+        }
+        
+        
+        // Modificar una persona
+        try {
+            System.out.println("Modificando una persona... tiago domenech");
+            personaABM.modificarPersona(personaABM.traerPersona(16l),"Thiago", "Mendoza", 25897654, Date.valueOf(LocalDate.of(1997, 9, 28)));
+            System.out.println("Persona modificada: " + personaABM.traerPersona(16l));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            System.out.println(e.getMessage());
+        }
+        
+        
+        // Eliminar una persona
+        try {
+        personaABM.eliminarPersona(18L);
+        System.out.println("Persona eliminada con ID: 18");
+        } catch (Exception e) {
+        // TODO Auto-generated catch block
+        System.out.println(e.getMessage());
+        }
+        
     }
 }
-

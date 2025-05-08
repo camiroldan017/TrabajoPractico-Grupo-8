@@ -8,8 +8,8 @@ public class TestContacto {
         SucursalABM sucursalABM = new SucursalABM();
         ContactoABM contactoABM = new ContactoABM();
     
-        Contacto contacto = new Contacto ("Sucursalcentro@gmail.com", "123456789", "Av. Siempre Viva 123");
-        contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion(), sucursalABM.traerSucursal(2l)); // Guardar en la BD antes de usarla
+        Contacto contacto = new Contacto ("Sucursalsur@gmail.com", "1234876577", "Calle Falsa 555");
+        contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion(), sucursalABM.traerSucursal(12l)); // Guardar en la BD antes de usarla
         
     }
 

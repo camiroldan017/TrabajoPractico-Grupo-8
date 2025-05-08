@@ -13,11 +13,11 @@ public class TestSucursal {
         //ContactoABM contactoABM = new ContactoABM();
         ServicioABM servicioABM = new ServicioABM();
 
-       // Sucursal sucursal = new Sucursal("Sucursal Centro");
-       //sucursalABM.agregarSucursal(sucursal); // Guardar en la BD antes de usarla
+        //Sucursal sucursal = new Sucursal("Sucursal Este");
+        //sucursalABM.agregarSucursal(sucursal); // Guardar en la BD antes de usarla
         //sucursalABM.agregarContactoASucursal(2L, contactoABM.traerContacto(1L));
-        sucursalABM.agregarServicioASucursal(4L, servicioABM.traerServicio(1L));
+        //sucursalABM.agregarServicioASucursal(4L, servicioABM.traerServicio(1L));
 
-        System.out.println(sucursalABM.traerSucursal(1l));
+        //System.out.println(sucursalABM.traerSucursal(1l));
     }
 }

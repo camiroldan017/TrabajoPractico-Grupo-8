@@ -12,6 +12,7 @@ public class Cliente extends Persona {
 
     public Cliente( String nombre, String apellido, int dni, Date fechaNacimiento) {
         super(nombre, apellido, dni, fechaNacimiento);
+        this.turnos = null;
     
     }
 
@@ -30,7 +31,7 @@ public class Cliente extends Persona {
 
     @Override 
     public String toString() {
-        return "Cliente [idCliente=" + idCliente + ", turnos=" + turnos + "]";
+        return "Cliente: " + super.toString() +  "[Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", DNI=" + getDni() + ", Fecha de Nacimiento=" + getFechaNacimiento() + "\n]";
     }
 
 }

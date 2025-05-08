@@ -9,7 +9,7 @@ public class TestServicio {
         ServicioABM servicioABM = new ServicioABM();
         SucursalABM sucursalABM = new SucursalABM();
         
-        long idServicio = servicioABM.agregarServicio("Limpieza", "2 horas", sucursalABM.traerSucursal(2L));
+        long idServicio = servicioABM.agregarServicio("Depilacion", " 90 minutos", sucursalABM.traerSucursal(13L));
         System.out.println("Servicio agregado con ID: " + idServicio);
         
         /* 

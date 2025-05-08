@@ -21,15 +21,34 @@ public class PersonaDao {
         return persona;
     }
 
-    public List<Persona> traerTodasLasPersonas() {
+    public Persona traerPersonaPorDni(int dni) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Persona> lista = null;
+        Persona persona = null;
         try {
-            lista = session.createQuery("from Persona", Persona.class).list();
+            persona = session.createQuery("from Persona where dni = :dni", Persona.class)
+                    .setParameter("dni", dni).uniqueResult();
         } finally {
             session.close();
         }
-        return lista;
+        return persona;
+    }
+
+    public List<Persona> traerTodasLasPersonas() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Persona", Persona.class).list();
+        }
+    }
+
+    public List<Empleado> traerTodosLosEmpleados(){
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Empleado", Empleado.class).list();
+        }
+    }
+
+    public List<Cliente> traerTodosLosClientes(){
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Cliente", Cliente.class).list();
+        }
     }
 
     public void guardarPersona(Persona persona) {
@@ -100,6 +119,19 @@ public class PersonaDao {
             session.close();
         }
         return cliente;
+    }
+
+    public Persona traerEmpleadoPorLegajo(String legajo) { 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Persona empleado = null;
+        try {
+            empleado = session.createQuery("from Empleado where legajo = :legajo", Persona.class)
+                    .setParameter("legajo", legajo).uniqueResult();
+        } finally {
+            session.close();
+        }
+        return empleado;
+        
     }
 
 }
