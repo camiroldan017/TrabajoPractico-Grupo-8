@@ -3,7 +3,7 @@ package datos;
 import java.util.Set;
 
 public class Servicio {
-    private int idServicio;
+    private long idServicio;
     private String nombre;
     private String duracion;
     private Sucursal sucursal;
@@ -13,16 +13,17 @@ public class Servicio {
     public Servicio() {
     }
 
-    public Servicio(int idServicio, String nombre, String duracion, Sucursal sucursal) {
-        this.idServicio = idServicio;
+    public Servicio(String nombre, String duracion, Sucursal sucursal) {
         this.nombre = nombre;
         this.duracion = duracion;
         this.sucursal = sucursal;
     }
-    public int getIdServicio() {
+
+    
+    public long getIdServicio() {
         return idServicio;
     }
-    public void setIdServicio(int idServicio) {
+    public void setIdServicio(long idServicio) {
         this.idServicio = idServicio;
     }
     public String getNombre() {

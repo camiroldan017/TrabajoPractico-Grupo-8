@@ -3,6 +3,7 @@ package dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import datos.Servicio;
 import datos.Contacto;
 import datos.Sucursal;
 import java.util.List;
@@ -97,5 +98,44 @@ public class SucursalDao {
                 }
             }
         } */
+
+    public void agregarServicioASucursal(long idSucursal, Servicio servicio) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx = session.beginTransaction();
+            try {
+                Sucursal sucursal = session.get(Sucursal.class, idSucursal);
+                if (sucursal != null) {
+                    sucursal.getServicios().add(servicio);
+                    servicio.setSucursal(sucursal); // Establecer la relación inversa
+                    session.update(sucursal);
+                    tx.commit();
+                } else {
+                    throw new RuntimeException("Sucursal no encontrada con id: " + idSucursal);
+                }
+            } catch (Exception e) {
+                tx.rollback();
+                throw e;
+            }
+        }
+    }
+
+    public void eliminarServicioDeSucursal(long idSucursal, Servicio servicio) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx = session.beginTransaction();
+            try {
+                Sucursal sucursal = session.get(Sucursal.class, idSucursal);
+                if (sucursal != null) {
+                    servicio.setSucursal(null); // Establecer la relación inversa
+                    session.update(sucursal);
+                    tx.commit();
+                } else {
+                    throw new RuntimeException("Sucursal no encontrada con id: " + idSucursal);
+                }
+            } catch (Exception e) {
+                tx.rollback();
+                throw e;
+            }
+        }
+    }
 
 }

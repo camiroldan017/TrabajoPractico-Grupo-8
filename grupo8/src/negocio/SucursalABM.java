@@ -3,6 +3,7 @@ package negocio;
 import dao.SucursalDao;
 import datos.Contacto;
 import datos.Sucursal;
+import datos.Servicio;
 import java.util.List;
 
 public class SucursalABM {
@@ -45,5 +46,9 @@ public class SucursalABM {
 
        public void agregarContactoASucursal(long idSucursal, Contacto contacto) {
         dao.agregarContactoASucursal(idSucursal, contacto);
+    }
+
+    public void agregarServicioASucursal(long idSucursal, Servicio  servicio) {
+        dao.agregarServicioASucursal(idSucursal, servicio);
     }
 }
