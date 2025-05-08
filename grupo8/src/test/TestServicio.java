@@ -8,21 +8,34 @@ public class TestServicio {
     public static void main(String[] args) {
         ServicioABM servicioABM = new ServicioABM();
         SucursalABM sucursalABM = new SucursalABM();
-        
-        long idServicio = servicioABM.agregarServicio("Depilacion", " 90 minutos", sucursalABM.traerSucursal(13L));
-        System.out.println("Servicio agregado con ID: " + idServicio);
-        
-        /* 
-        System.out.println("Lista de servicios:");
-        for (Servicio servicio : servicioABM.traerServicios()) {
-            System.out.println(servicio);
+         
+        try {
+            // Traer un servicio por ID
+            long idServicio = servicioABM.agregarServicio("Depilacion", " 90 minutos", sucursalABM.traerSucursal(2L));
+            System.out.println("Servicio agregado con ID: " + idServicio);
+            long idServicio2 = servicioABM.agregarServicio("Corte de pelo", " 60 minutos", sucursalABM.traerSucursal(2L));
+            System.out.println("Servicio agregado con ID: " + idServicio2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        */
         
-        // Eliminar un servicio
+        try {
+            System.out.println("Lista de servicios:" + servicioABM.traerServicios());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+       
         /* 
-        servicioABM.eliminarServicio(idServicio);
-        System.out.println("Servicio eliminado con ID: " + idServicio);
-        */
+        // Eliminar un servicio
+        try	 {
+            servicioABM.eliminarServicio(2);
+            System.out.println("Servicio eliminado con ID: " + 2);
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+       */
+        
 }
 }

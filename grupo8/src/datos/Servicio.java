@@ -58,8 +58,7 @@ public class Servicio {
     }
     @Override
     public String toString() {
-        return "Servicio [idServicio=" + idServicio + ", nombre=" + nombre + ", duracion=" + duracion + ", sucursal="
-                + sucursal + "]";
+        return "Servicio [idServicio=" + idServicio + ", nombre=" + nombre + ", duracion=" + duracion  +  "]\n";
     }
 
 }
