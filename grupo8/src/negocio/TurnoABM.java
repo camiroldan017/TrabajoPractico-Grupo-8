@@ -15,151 +15,104 @@ public class TurnoABM {
 
     private TurnoDao dao = new TurnoDao();
 
-    public Turno traerTurno(long idTurno) {
-        try {
+    public Turno traerTurno(long idTurno) throws Exception {
+            // Traemos el turno por su ID desde la base de datos
             Turno turno = dao.traerTurnoPorId(idTurno);
 
             // Si el turno es nulo, lanzamos una excepción
-            if (turno == null) {
-                throw new IllegalArgumentException("El turno con 'ID " + idTurno + "' no existe.");
-            }
-
+            if (turno == null) throw new Exception("El turno con 'ID " + idTurno + "' no existe.");
             return turno;
-
-        } catch (IllegalArgumentException e) {
-            // Manejamos la excepción y mostramos un mensaje en consola
-            System.out.println("ERROR AL BUSCAR TURNO: " + e.getMessage());
-            return null; // Retornamos null si no se encuentra el turno
-        }
     }
 
-    public List<Turno> traerTurnos() {
-        try {
+    public List<Turno> traerTurnos() throws Exception {
+            // Traemos todos los turnos de la base de datos y los guardamos en una lista
             List<Turno> turnos = dao.traerTodosLosTurnos();
 
             // Si la lista de turnos está vacía, lanzamos una excepción
-            if (turnos.isEmpty()) {
-                throw new IllegalStateException("No hay turnos registrados.");
-            }
-
+            if (turnos.isEmpty()) throw new Exception("\nNo hay turnos registrados.");
             return turnos;
-
-        } catch (IllegalStateException e) {
-            // Manejamos la excepción y mostramos un mensaje en consola
-            System.out.println(e.getMessage());
-            return null; // Retornamos null si no se encuentra el turno
-        }
     }
 
     public long agregarTurno(Date fecha, LocalTime hora, String estado, Cliente cliente, Empleado empleado,
-            Servicio servicio, Sucursal sucursal) {
-        try {
+            Servicio servicio, Sucursal sucursal) throws Exception {
+            // Creamos un turno nuevo
             Turno turno = new Turno(fecha, hora, estado, cliente, empleado, servicio, sucursal);
 
-            // Verificamos si ya existe un turno con la misma fecha, hora y servicio
-            if (dao.existeTurnoEnFechaYHoraYServicio(fecha, hora, servicio)) {
-                throw new IllegalArgumentException("Ya existe un turno en esa fecha, hora y con ese servicio.");
-            }
+            // Verificamos si ya hay un turno reservado para ese servicio en esa misma fecha y hora
+            if (dao.existeTurnoEnFechaYHoraYServicio(fecha, hora, servicio))
+                throw new Exception("Ya existe una reserva para '" + servicio.getNombre() + "' el día " + fecha
+                        + " a las " + hora + ".");
 
-            // Verificamos si el cliente ya tiene un turno con la misma fecha y hora
-            if (dao.clienteTieneTurnoEnFechaYHora(cliente, fecha, hora)) {
-                throw new IllegalArgumentException("El cliente ya tiene un turno en esa fecha y hora.");
-            }
+            // Verificamos si el cliente ya tiene un turno reservado para esa fecha y hora
+            if (dao.clienteTieneTurnoEnFechaYHora(cliente, fecha, hora))
+                throw new Exception("El cliente ya tiene un turno reservado para el dia " + fecha + " a las " + hora + ".");
 
-            // Verificamos si el empleado ya tiene un turno asignado con la misma fecha y
-            // hora
-            if (dao.empleadoTieneTurnoAsignadoEnFechaYHora(empleado, fecha, hora)) {
-                throw new IllegalArgumentException("El empleado ya tiene un turno asignado en esa fecha y hora.");
-            }
+            // Verificamos si el empleado ya tiene un turno asignado para esa fecha y hora
+            if (dao.empleadoTieneTurnoAsignadoEnFechaYHora(empleado, fecha, hora))
+                throw new Exception("El empleado ya tiene un turno asignado para el dia " + fecha + " a las " + hora + ".");
 
-            // Ya teniendo todo verificado, guardamos el turno
+            // Una vez verificado todo, guardamos el turno
             dao.guardarTurno(turno);
-            // Avisamos que el turno se guardó correctamente y lo mostramos por consola
+            // Imprimimos un mensaje confirmando que el turno se guardó correctamente,
+             // junto con los detalles del turno.
             System.out.println("TURNO GUARDADO CORRECTAMENTE: " + turno);
             return turno.getIdTurno(); // Retornamos el ID del turno guardado
-
-        } catch (IllegalArgumentException e) {
-            // Manejamos la excepción y mostramos un mensaje en consola
-            System.out.println("ERROR AL QUERER AGREGAR EL TURNO: " + e.getMessage());
-            return -1; // Indicamos que no se pudo agregar el turno
-        }
     }
 
-    public long agregarTurno(Turno turno) {
-        try {
-            // Verificamos si el turno es nulo
-            if (turno == null) {
-                throw new IllegalArgumentException("El turno no puede ser nulo.");
-            }
+    public long agregarTurno(Turno turno) throws Exception {
+        // Verificamos si el turno es nulo, de ser así, lanzamos una excepción
+        if (turno == null) throw new Exception("El turno no puede ser nulo.");
 
-            // Verificamos si ya hay un turno en esa fecha, hora y servicio
-            if (dao.existeTurnoEnFechaYHoraYServicio(turno.getFecha(), turno.getHora(), turno.getServicio())) {
-                throw new IllegalArgumentException("Ya existe un turno en esa fecha, hora y con ese servicio.");
-            }
+        // Verificamos si ya hay un turno reservado para ese servicio en esa misma fecha y hora
+        if (dao.existeTurnoEnFechaYHoraYServicio(turno.getFecha(), turno.getHora(), turno.getServicio()))
+            throw new Exception("Ya existe una reserva para '" + turno.getServicio().getNombre() + "' el dia " + turno.getFecha()
+                    + " a las " + turno.getHora() + ".");
 
-            // Verificamos si el cliente ya tiene un turno con la misma fecha y hora
-            if (dao.clienteTieneTurnoEnFechaYHora(turno.getCliente(), turno.getFecha(), turno.getHora())) {
-                throw new IllegalArgumentException("El cliente ya tiene un turno en esa fecha y hora.");
-            }
+        // Verificamos si el cliente ya tiene un turno reservado para esa fecha y hora
+        if (dao.clienteTieneTurnoEnFechaYHora(turno.getCliente(), turno.getFecha(), turno.getHora()))
+            throw new Exception("El cliente ya tiene un turno reservado para el dia " + turno.getFecha()
+                    + " a las " + turno.getHora() + ".");
 
-            // Verificamos si el empleado ya tiene un turno asignado con la misma fecha y
-            // hora
-            if (dao.empleadoTieneTurnoAsignadoEnFechaYHora(turno.getEmpleado(), turno.getFecha(), turno.getHora())) {
-                throw new IllegalArgumentException("El empleado ya tiene un turno asignado en esa fecha y hora.");
-            }
+        // Verificamos si el empleado ya tiene un turno asignado para esa fecha y hora
+        if (dao.empleadoTieneTurnoAsignadoEnFechaYHora(turno.getEmpleado(), turno.getFecha(), turno.getHora()))
+            throw new Exception("El empleado ya tiene un turno asignado para el dia " + turno.getFecha()
+                    + " a las " + turno.getHora() + ".");
 
-            // Ya teniendo todo verificado, guardamos el turno
-            dao.guardarTurno(turno);
-            // Avisamos que el turno se guardó correctamente y lo mostramos por consola
-            System.out.println("TURNO GUARDADO CORRECTAMENTE: " + turno);
-            return turno.getIdTurno(); // Retornamos el ID del turno guardado
-
-        } catch (IllegalArgumentException e) {
-            // Manejamos la excepción y mostramos un mensaje en consola
-            System.out.println("ERROR AL QUERER AGREGAR EL TURNO: " + e.getMessage());
-            return -1; // Indicamos que no se pudo agregar el turno
-        }
+        // Una vez verificado todo, guardamos el turno
+        dao.guardarTurno(turno);
+        // Imprimimos un mensaje confirmando que el turno se guardó correctamente,
+        // junto con los detalles del turno.
+        System.out.println("TURNO GUARDADO CORRECTAMENTE: " + turno);
+        return turno.getIdTurno(); // Retornamos el ID del turno guardado
     }
 
-    public void modificarTurno(Turno turno, Date fechaNueva, LocalTime horaNueva, String estadoNuevo) {
-        try {
-            // Verificamos si el turno es nulo antes de hacer cualquier operación con él
-            if (turno == null) {
-                throw new IllegalArgumentException("El turno que desea modificar no existe.");
-            }
+    public void modificarTurno(Turno turno, Date fechaNueva, LocalTime horaNueva, String estadoNuevo) throws Exception {
+            // Verificamos si el turno es nulo, de ser así, lanzamos una excepción
+            if (turno == null) throw new Exception("El turno no puede ser nulo.");
 
             // Verificamos si ya existe un turno con la misma fecha, hora y servicio
-            if (dao.existeTurnoEnFechaYHoraYServicio(fechaNueva, horaNueva, turno.getServicio())) {
-                throw new IllegalArgumentException("Ya existe un turno en esa fecha, hora y con ese servicio.");
-            }
+            if (dao.existeTurnoEnFechaYHoraYServicio(fechaNueva, horaNueva, turno.getServicio()))
+                throw new Exception("Ya existe una reserva para ese servicio el dia " + fechaNueva + " a las " + horaNueva + ".");
 
-            // Ya teniendo todo verificado, modificamos el turno con los nuevos valores
+            // Una vez verificado todo, modificamos el turno con los nuevos valores
             turno.setFecha(fechaNueva);
             turno.setHora(horaNueva);
             turno.setEstado(estadoNuevo);
 
-            // Realizamos la modificación
+            // Realizamos la modificación en la BD
             dao.actualizarTurno(turno);
-            System.out.println("TURNO MODIFICADO CORRECTAMENTE: " + turno);
-        } catch (IllegalArgumentException e) {
-            // Manejamos la excepción y mostramos un mensaje en consola
-            System.out.println("ERROR AL QUERER MODIFICAR EL TURNO: " + e.getMessage());
-        }
+            System.out.println("\nTURNO MODIFICADO CORRECTAMENTE: " + turno);
     }
 
-    public void eliminarTurno(long idTurno) {
-        try {
+    public void eliminarTurno(long idTurno) throws Exception {
+            // Traemos el turno por su ID desde la base de datos
             Turno turno = dao.traerTurnoPorId(idTurno);
-            if (turno != null) {
-                dao.eliminarTurno(turno);
-                System.out.println("El turno con 'ID " + idTurno + "' fue eliminado correctamente.");
-            } else {
-                throw new RuntimeException("El turno que desea eliminar (ID: " + idTurno + ") no existe.");
-            }
-        } catch (RuntimeException e) {
-            // Manejamos la excepción y mostramos un mensaje en consola
-            System.out.println("ERROR AL QUERER ELIMINAR EL TURNO: " + e.getMessage());
-        }
-    }
+            
+            // Verificamos si el turno existe
+            if (turno == null) throw new Exception("El turno que desea eliminar (ID: " + idTurno + ") no existe.");
 
+            // Si existe, lo eliminamos 
+            dao.eliminarTurno(turno);
+            System.out.println("El turno con 'ID " + idTurno + "' fue eliminado correctamente.");
+    }
 }
