@@ -18,10 +18,8 @@ public class Sucursal {
         this.nombre = nombre;
         this.contacto = null;
         this.empleados = new HashSet<>();
-        ;
         this.servicios = new HashSet<>();
         this.turnos = new HashSet<>();
-        ;
     }
 
     public long getIdSucursal() {

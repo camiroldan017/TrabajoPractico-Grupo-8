@@ -2,6 +2,9 @@ package dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import datos.Cliente;
+import datos.Empleado;
 import datos.Persona;
 import java.util.List;
 
@@ -37,7 +40,8 @@ public class PersonaDao {
             session.save(persona);
             tx.commit();
         } catch (Exception e) {
-            if (tx != null) tx.rollback();
+            if (tx != null)
+                tx.rollback();
             throw e;
         } finally {
             session.close();
@@ -52,7 +56,8 @@ public class PersonaDao {
             session.update(persona);
             tx.commit();
         } catch (Exception e) {
-            if (tx != null) tx.rollback();
+            if (tx != null)
+                tx.rollback();
             throw e;
         } finally {
             session.close();
@@ -67,11 +72,34 @@ public class PersonaDao {
             session.delete(persona);
             tx.commit();
         } catch (Exception e) {
-            if (tx != null) tx.rollback();
+            if (tx != null)
+                tx.rollback();
             throw e;
         } finally {
             session.close();
         }
+    }
+
+    public Empleado traerEmpleadoPorId(long idEmpleado) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Empleado empleado = null;
+        try {
+            empleado = session.get(Empleado.class, idEmpleado);
+        } finally {
+            session.close();
+        }
+        return empleado;
+    }
+
+    public Cliente traerClientePorId(long idCliente) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Cliente cliente = null;
+        try {
+            cliente = session.get(Cliente.class, idCliente);
+        } finally {
+            session.close();
+        }
+        return cliente;
     }
 
 }

@@ -52,5 +52,12 @@ public class PersonaABM {
         return empleado.getIdPersona();
     }
 
-}
+    public Empleado traerEmpleado(long idEmpleado) {
+        return dao.traerEmpleadoPorId(idEmpleado);
+    }
 
+    public Cliente traerCliente(long idCliente) {
+        return dao.traerClientePorId(idCliente);
+    }
+
+}
