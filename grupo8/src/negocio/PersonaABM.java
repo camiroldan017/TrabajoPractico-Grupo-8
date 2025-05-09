@@ -72,7 +72,7 @@ public class PersonaABM {
         if(traerPersonaPorDni(dni) != null) {
             throw new Exception("Ya existe un cliente con el DNI: " + dni);
         }
-        Cliente cliente = new Cliente (nombre, apellido, dni, fechaNacimiento,contacto , nroCliente);
+        Cliente cliente = new Cliente (nombre, apellido, dni, fechaNacimiento, contacto , nroCliente);
         dao.guardarPersona(cliente);
         return cliente.getIdPersona();
     }

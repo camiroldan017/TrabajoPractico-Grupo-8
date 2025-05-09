@@ -8,12 +8,12 @@ public class TestContacto {
         ContactoABM contactoABM = new ContactoABM();
     
         try{
-            Contacto contacto = new Contacto ("Sucursalsur@gmail.com", "1234876577", "Calle Falsa 555");
+            Contacto contacto = new Contacto ("Sofia@gmail.com", "1234231577", "Calle Laguna 555");
              contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-       
+    
     }
 
 

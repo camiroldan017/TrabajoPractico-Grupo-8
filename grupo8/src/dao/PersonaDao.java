@@ -42,13 +42,13 @@ public class PersonaDao {
         }
     }
 
-    public List<Empleado> traerTodosLosEmpleados(){
+    public List<Empleado> traerTodosLosEmpleados() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Empleado", Empleado.class).list();
         }
     }
 
-    public List<Cliente> traerTodosLosClientes(){
+    public List<Cliente> traerTodosLosClientes() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Cliente", Cliente.class).list();
         }
@@ -59,6 +59,11 @@ public class PersonaDao {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
+            // Reatachar contacto si no es nuevo
+            if (persona.getContacto() != null && persona.getContacto().getIdContacto() != 0) {
+                Contacto contacto = session.get(Contacto.class, persona.getContacto().getIdContacto());
+                persona.setContacto(contacto);
+            }
             session.save(persona);
             tx.commit();
         } catch (Exception e) {
@@ -124,7 +129,7 @@ public class PersonaDao {
         return cliente;
     }
 
-    public Persona traerEmpleadoPorLegajo(String legajo) { 
+    public Persona traerEmpleadoPorLegajo(String legajo) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Persona empleado = null;
         try {
@@ -134,8 +139,7 @@ public class PersonaDao {
             session.close();
         }
         return empleado;
-        
+
     }
- 
 
 }
