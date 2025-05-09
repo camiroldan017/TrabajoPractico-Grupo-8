@@ -31,9 +31,9 @@ public class SucursalABM {
         return dao.traerTodasLasSucursales();
     }
 
-    public long agregarSucursal(String nombre) throws Exception {
+    public long agregarSucursal(String nombre, String direccion, String telefono) throws Exception {
         // Creamos una nueva sucursal
-        Sucursal sucursal = new Sucursal(nombre);
+        Sucursal sucursal = new Sucursal(nombre,direccion, telefono);
 
         // El nombre de la sucursal no puede ser nulo o vacío
         if(nombre == null || nombre.isEmpty()) {
@@ -61,7 +61,7 @@ public class SucursalABM {
         return sucursal.getIdSucursal();
     }
 
-    public void modificarSucursal(Sucursal sucursal, String nombreNuevo, Contacto contactoNuevo) throws Exception {
+    public void modificarSucursal(Sucursal sucursal, String nombreNuevo, String direccionNueva, String telefonoNuevo) throws Exception {
         // Verificamos si la sucursal es nula, de ser así, lanzamos una excepción
         if (sucursal == null) {
             throw new Exception ("La sucursal no puede ser nula.");
@@ -72,14 +72,19 @@ public class SucursalABM {
             throw new Exception("El nombre de la sucursal no puede ser nulo o vacío.");
         }
 
-        // Verificamos si el contacto es nulo, de ser así, lanzamos una excepción
-        if (contactoNuevo == null) {
-            throw new Exception("El contacto no puede ser nulo.");
+        // Verificamos si la direccion es nula, de ser así, lanzamos una excepción
+        if (direccionNueva == null) {
+            throw new Exception("La direccion no puede ser nula.");
         }
 
+        // Verificamos si la direccion es nula, de ser así, lanzamos una excepción
+        if (telefonoNuevo == null) {
+            throw new Exception("El telefono no puede ser nulo.");
+        }
         // Modificamos la sucursal con los nuevos datos
         sucursal.setNombre(nombreNuevo);
-        sucursal.setContacto(contactoNuevo);
+        sucursal.setDireccion (direccionNueva);
+        sucursal.setTelefono(telefonoNuevo);
     
         //Se realiza la actualización de la sucursal en la base de datos
         dao.actualizarSucursal(sucursal);
@@ -99,9 +104,6 @@ public class SucursalABM {
         }
     }
 
-    public void agregarContactoASucursal(long idSucursal, Contacto contacto) {
-        dao.agregarContactoASucursal(idSucursal, contacto);
-    }
 
     public void agregarServicioASucursal(long idSucursal, Servicio  servicio) {
         dao.agregarServicioASucursal(idSucursal, servicio);

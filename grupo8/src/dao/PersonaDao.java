@@ -4,8 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Cliente;
+import datos.Contacto;
 import datos.Empleado;
 import datos.Persona;
+import datos.Sucursal;
+
 import java.util.List;
 
 public class PersonaDao {
@@ -133,5 +136,6 @@ public class PersonaDao {
         return empleado;
         
     }
+ 
 
 }

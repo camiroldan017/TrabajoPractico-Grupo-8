@@ -11,8 +11,12 @@
 		<property column="dni" name="dni" type="int" />
 		<property column="fechaNacimiento" name="fechaNacimiento" type="date" />
 
+        <one-to-one name="contacto" class="datos.Contacto" cascade="all" constrained="false"
+            foreign-key="fk_persona_contacto" />
+
         <joined-subclass name="datos.Cliente" table="cliente">
             <key column="idCliente"/>
+            <property column="nroCliente" name= "nroCliente" type="int"/>
             <set name="turnos" inverse="true" cascade="all">
                 <key column="idCliente"/>
                 <one-to-many class="datos.Turno"/>
@@ -21,6 +25,7 @@
 
         <joined-subclass name="datos.Empleado" table="empleado">
             <key column="idEmpleado"/>
+            <property column="nroEmpleado" name= "nroEmpleado" type="int"/>
             <property column="legajo" name="legajo" type="string"/>
             <many-to-one name="sucursal" class="datos.Sucursal" column="idSucursal" not-null="true"/>
     
@@ -34,6 +39,7 @@
                 <many-to-many class="datos.Servicio" column="idServicio"/>
             </set>
         </joined-subclass>
+
         
 	</class>
 </hibernate-mapping>

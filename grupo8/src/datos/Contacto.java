@@ -5,7 +5,6 @@ public class Contacto {
     private String email;
     private String telefono;
     private String direccion;
-    private Sucursal sucursal;
 
     public Contacto() {
     }
@@ -46,14 +45,6 @@ public class Contacto {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public Sucursal getSucursal() {
-        return sucursal;
-    }
-
-    public void setSucursal(Sucursal sucursal) {
-        this.sucursal = sucursal;
     }
 
     @Override

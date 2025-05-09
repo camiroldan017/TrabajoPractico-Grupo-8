@@ -8,15 +8,17 @@ public class Persona {
     private String apellido;
     private int dni;
     private Date fechaNacimiento;
+    private Contacto contacto;
 
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido, int dni, Date fechaNacimiento) {
+    public Persona(String nombre, String apellido, int dni, Date fechaNacimiento, Contacto contacto) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
+        this.contacto = contacto;
     }
 
     public long getIdPersona() {
@@ -49,6 +51,14 @@ public class Persona {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    public Contacto getContacto() {
+        return contacto;
+    }
+    public void setContacto(Contacto contacto) {
+        this.contacto = contacto;
+    }
+    
     @Override
     public String toString() {
         return "Persona: idPersona=" + idPersona ;

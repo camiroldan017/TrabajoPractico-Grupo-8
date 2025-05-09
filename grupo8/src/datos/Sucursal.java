@@ -6,7 +6,8 @@ import java.util.Set;
 public class Sucursal {
     private long idSucursal;
     private String nombre;
-    private Contacto contacto;
+    private String direccion;
+    private String telefono;
     private Set<Empleado> empleados;
     private Set<Servicio> servicios;
     private Set<Turno> turnos;
@@ -14,9 +15,10 @@ public class Sucursal {
     public Sucursal() {
     }
 
-    public Sucursal(String nombre) {
+    public Sucursal(String nombre, String direccion, String telefono) {
         this.nombre = nombre;
-        this.contacto = null;
+        this.direccion = direccion;
+        this.telefono = telefono;
         this.empleados = new HashSet<>();
         this.servicios = new HashSet<>();
         this.turnos = new HashSet<>();
@@ -38,12 +40,22 @@ public class Sucursal {
         this.nombre = nombre;
     }
 
-    public Contacto getContacto() {
-        return contacto;
+    
+
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setContacto(Contacto contacto) {
-        this.contacto = contacto;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public Set<Empleado> getEmpleados() {
@@ -73,6 +85,7 @@ public class Sucursal {
     @Override
     public String toString() {
         return "Sucursal{" +
-                "idSucursal=" + idSucursal + ", nombre='" + nombre + '\'' + ", contacto=" + contacto + '}';
+                "idSucursal=" + idSucursal +", nombre='" + nombre + '\'' + ", direccion='" + direccion + 
+                '\'' +", telefono='" + telefono  +'}';
     }
 }

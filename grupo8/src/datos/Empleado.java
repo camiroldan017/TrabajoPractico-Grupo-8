@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class Empleado extends Persona {
     private long idEmpleado;
+    private int nroEmpleado;
     private String legajo;
     private Sucursal sucursal;
     private Set<Turno> turnos;
@@ -14,8 +15,9 @@ public class Empleado extends Persona {
         super();
     }
 
-    public Empleado(String nombre, String apellido, int dni, Date fechaNacimiento, String legajo, Sucursal sucursal) {
-        super(nombre, apellido, dni, fechaNacimiento);
+    public Empleado(String nombre, String apellido, int dni, Date fechaNacimiento, Contacto contacto, int nroEmpleado, String legajo, Sucursal sucursal) {
+        super(nombre, apellido, dni, fechaNacimiento, contacto);
+        this.nroEmpleado = nroEmpleado;
         this.legajo = legajo;
         this.sucursal = sucursal;
     }
@@ -31,6 +33,12 @@ public class Empleado extends Persona {
     }
     public void setLegajo(String legajo) {
         this.legajo = legajo;
+    }
+    public int getNroEmpleado() {
+        return nroEmpleado;
+    }
+    public void setNroEmpleado(int nroEmpleado) {
+        this.nroEmpleado = nroEmpleado;
     }
     public Sucursal getSucursal() {
         return sucursal;
@@ -52,6 +60,6 @@ public class Empleado extends Persona {
     }
     @Override
     public String toString() {
-        return "Empleado: " + super.toString() + "[Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", DNI=" + getDni() + ", Fecha de Nacimiento=" + getFechaNacimiento() + ", Legajo=" + legajo + "\n]";
+        return "Empleado: " + super.toString() + "[Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", DNI=" + getDni() + ", Fecha de Nacimiento=" + getFechaNacimiento() + ", Legajo=" + legajo + ", Contacto="+ getContacto()  + "]";
     }
 }

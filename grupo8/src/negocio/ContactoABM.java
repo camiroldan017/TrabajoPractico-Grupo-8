@@ -2,7 +2,7 @@ package negocio;
 
 import dao.ContactoDao;
 import datos.Contacto;
-import datos.Sucursal;
+import datos.Persona;
 import java.util.List;
 
 public class ContactoABM {
@@ -17,28 +17,22 @@ public class ContactoABM {
         return dao.traerTodosLosContactos();
     }
 
-    public long agregarContacto(String email, String telefono, String direccion, Sucursal sucursal) {
-        Contacto contacto = new Contacto();
-        //estas lineas de aca abajo me generan duda(?
-        contacto.setEmail(email);
-        contacto.setTelefono(telefono);
-        contacto.setDireccion(direccion);
-        contacto.setSucursal(sucursal);
+    public long agregarContacto(String email, String telefono, String direccion) throws Exception {
+        Contacto contacto = new Contacto(email, telefono, direccion);
         dao.guardarContacto(contacto);
         return contacto.getIdContacto();
     }
 
-    public void modificarContacto(Contacto contacto) {
+    public void modificarContacto(Contacto contacto) throws Exception {
+        if(contacto == null) {
+            throw new Exception("El contacto no puede ser nulo.");
+        }
         dao.actualizarContacto(contacto);
     }
 
-    public void eliminarContacto(long idContacto) {
+    public void eliminarContacto(long idContacto) throws Exception {
         Contacto contacto = dao.traerContactoPorId(idContacto);
-        if (contacto != null) {
+        if (contacto != null)  throw new Exception("Contacto no encontrado con id: " + idContacto);
             dao.eliminarContacto(contacto);
-        } else {
-            throw new RuntimeException("Contacto no encontrado con id: " + idContacto);
-        }
-
- }
+    }
 }
