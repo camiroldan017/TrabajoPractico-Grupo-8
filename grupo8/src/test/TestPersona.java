@@ -16,7 +16,7 @@ public class TestPersona {
         SucursalABM sucursalABM = new SucursalABM();
         ContactoABM contactoABM = new ContactoABM();
         System.out.println("Creando un nuevo cliente...");
-        /*
+        
         long idCliente;
         
         try {
@@ -27,7 +27,7 @@ public class TestPersona {
         // TODO Auto-generated catch block
         System.out.println(e.getMessage());
         }
-        /*
+        
         try {
         idCliente = personaABM.agregarCliente("Tiago", "Domenech", 22466555,
         Date.valueOf(LocalDate.of(1997, 4, 20)), contactoABM.traerContacto(3L), 2);
@@ -37,24 +37,24 @@ public class TestPersona {
         System.out.println(e.getMessage());
         }
         
-        */
+        
         System.out.println("Creando un nuevo empleado...");
         
         long idEmpleado;
-        /* 
+         
         try {
         idEmpleado = personaABM.agregarEmpleado("Sofia", "Lanceti", 19567890,
-        Date.valueOf(LocalDate.of(1999, 10, 15)),contactoABM.traerContacto(5l),1, "A345",
+        Date.valueOf(LocalDate.of(1999, 10, 15)),contactoABM.traerContacto(5l), "A345",
         sucursalABM.traerSucursal(3L));
         System.out.println("Empleado agregado con ID: " + idEmpleado);
         } catch (Exception e) {
         // TODO Auto-generated catch block
         System.out.println(e.getMessage());
         }
-        /*
+        
         try {
         idEmpleado = personaABM.agregarEmpleado("Car", "Rodri",25034211,
-        Date.valueOf(LocalDate.of(2003, 5, 05)),contactoABM.traerContacto(1L),2, "A992",
+        Date.valueOf(LocalDate.of(2003, 5, 05)),contactoABM.traerContacto(1L), "A992",
         sucursalABM.traerSucursal(13L));
         System.out.println("Empleado agregado con ID: " + idEmpleado);
         } catch (Exception e) {
@@ -75,7 +75,7 @@ public class TestPersona {
         //intentar agregar un Empleado con un legajo ya existente
         try {
             idEmpleado = personaABM.agregarEmpleado("Caro", "Rodriguez", 25555513,
-                    Date.valueOf(LocalDate.of(2003, 5, 05)), "A992",
+                    Date.valueOf(LocalDate.of(2003, 5, 05)), contactoABM.traerContacto(1L),"A992",
                     sucursalABM.traerSucursal(13L));
             System.out.println("Empleado agregado con ID: " + idEmpleado);
         } catch (Exception e) {
@@ -86,7 +86,7 @@ public class TestPersona {
         //intentar agregar un cliente con un dni ya existente
         try {
             idCliente = personaABM.agregarCliente("Sofia", "Gonzales", 25555513,
-                    Date.valueOf(LocalDate.of(2002, 6, 10)));
+                    Date.valueOf(LocalDate.of(2002, 6, 10)), contactoABM.traerContacto(1L), 1);
             System.out.println("Cliente agregado con ID: " + idCliente);
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -113,7 +113,7 @@ public class TestPersona {
         // TODO Auto-generated catch block
         System.out.println(e.getMessage());
         }
-     */ 
+     
         try {
             System.out.println(personaABM.traerPersonaYContactoPorId(10l));
         } catch (Exception e) {

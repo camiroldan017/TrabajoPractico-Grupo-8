@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Servicio;
-import datos.Contacto;
 import datos.Sucursal;
 import java.util.List;
 

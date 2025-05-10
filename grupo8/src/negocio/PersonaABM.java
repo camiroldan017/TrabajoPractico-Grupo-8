@@ -85,12 +85,12 @@ public class PersonaABM {
         return existe;
     }
 
-    public long agregarEmpleado(String nombre, String apellido, int dni, Date fechaNacimiento,Contacto contacto, int nroEmpleado,String legajo,
+    public long agregarEmpleado(String nombre, String apellido, int dni, Date fechaNacimiento,Contacto contacto, String legajo,
             Sucursal sucursal) throws Exception {
         if(empleadoExiste(legajo)) {
             throw new Exception("Ya existe un empleado con el legajo: " + legajo);
         }
-        Empleado empleado = new Empleado(nombre, apellido, dni, fechaNacimiento, contacto, nroEmpleado, legajo, sucursal);
+        Empleado empleado = new Empleado(nombre, apellido, dni, fechaNacimiento, contacto, legajo, sucursal);
         dao.guardarPersona(empleado);
         return empleado.getIdPersona();
     }
@@ -117,7 +117,6 @@ public class PersonaABM {
         empleado.setDni(dni);
         empleado.setFechaNacimiento(fechaNacimiento);
         empleado.setContacto(contacto);
-        empleado.setNroEmpleado(nroEmpleado);
         empleado.setLegajo(legajo);
         empleado.setSucursal(sucursal);
         dao.actualizarPersona(empleado);
@@ -134,23 +133,4 @@ public class PersonaABM {
     public Cliente traerCliente(long idCliente) {
         return dao.traerClientePorId(idCliente);
     }
-
-    
-    /*TRAER QUE NO SE UTILIZA EN EL PROYECTO
-    public List<Empleado> traerEmpleados() throws Exception {
-        List<Empleado> lista = dao.traerTodosLosEmpleados();
-        if (lista == null || lista.isEmpty()) {
-            throw new Exception("No hay empleados agregados.");
-        }
-        return lista;
-    }
-
-    public List<Cliente> traerClientes() throws Exception {
-        List<Cliente> lista = dao.traerTodosLosClientes();
-        if (lista == null || lista.isEmpty()) {
-            throw new Exception("No hay clientes agregados.");
-        }
-        return lista;
-    }
-    */
 }
