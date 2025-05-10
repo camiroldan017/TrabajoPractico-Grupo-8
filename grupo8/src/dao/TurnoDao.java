@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import datos.Cliente;
 import datos.Empleado;
 import datos.Servicio;
+import datos.Sucursal;
 import datos.Turno;
 
 public class TurnoDao {
@@ -21,20 +22,33 @@ public class TurnoDao {
         }
     }
 
+    public Turno traerTurnoPorFechaHoraServicioYSucursal(Date fecha, LocalTime hora, Servicio servicio, Sucursal sucursal) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            String hql = "FROM Turno t WHERE t.fecha = :fecha AND t.hora = :hora AND t.servicio = :servicio AND t.sucursal = :sucursal";
+            return session.createQuery(hql, Turno.class)
+                    .setParameter("fecha", fecha)
+                    .setParameter("hora", hora)
+                    .setParameter("servicio", servicio)
+                    .setParameter("sucursal", sucursal)
+                    .uniqueResult();
+        }
+    }
+
     public List<Turno> traerTodosLosTurnos() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Turno", Turno.class).list();
         }
     }
 
-    public boolean existeTurnoEnFechaYHoraYServicio(Date fecha, LocalTime hora, Servicio servicio) {
+    public boolean existeTurnoEnFechaHoraServicioYSucursal(Date fecha, LocalTime hora, Servicio servicio, Sucursal sucursal) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            String hql = "FROM Turno t WHERE t.fecha = :fecha AND t.hora = :hora AND t.servicio = :servicio";
+            String hql = "FROM Turno t WHERE t.fecha = :fecha AND t.hora = :hora AND t.servicio = :servicio AND t.sucursal = :sucursal";
             Optional<Turno> resultado = session
                     .createQuery(hql, Turno.class)
                     .setParameter("fecha", fecha)
                     .setParameter("hora", hora)
                     .setParameter("servicio", servicio)
+                    .setParameter("sucursal", sucursal)
                     .uniqueResultOptional();
             return resultado.isPresent();
         }

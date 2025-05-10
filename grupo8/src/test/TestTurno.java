@@ -124,6 +124,15 @@ public class TestTurno {
             System.out.println("\nERROR AL BUSCAR TURNO: " + e.getMessage());
         }
 
+        // Buscamos un turno que no existe
+        try {
+            turnoABM.traerTurno(Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), servicioABM.traerServicio(2L), sucursalABM.traerSucursal(2L));
+        } catch (Exception e) {
+            // TODO: handle exception
+            // Manejamos la excepción y mostramos un mensaje en consola
+            System.out.println("\nERROR AL BUSCAR TURNO: " + e.getMessage());
+        }
+
         // Modificamos el turno con ID 1
         try {
             turnoABM.modificarTurno(turnoABM.traerTurno(1L), Date.valueOf(LocalDate.of(2025, 9, 5)), LocalTime.of(07, 15, 00), "confirmado");

@@ -24,6 +24,16 @@ public class TurnoABM {
             return turno;
     }
 
+    public Turno traerTurno(Date fecha, LocalTime hora, Servicio servicio, Sucursal sucursal) throws Exception {
+            // Traemos el turno por su fecha, hora, servicio y sucursal desde la base de datos
+            Turno turno = dao.traerTurnoPorFechaHoraServicioYSucursal(fecha, hora, servicio, sucursal);
+
+            // Si el turno es nulo, lanzamos una excepción
+            if (turno == null) throw new Exception("No se ha reservado ningún turno para '" + servicio.getNombre() + "' el día " + fecha
+                    + " a las " + hora + " en la sucursal " + sucursal.getNombre() + ".");
+            return turno;
+    }
+
     public List<Turno> traerTurnos() throws Exception {
             // Traemos todos los turnos de la base de datos y los guardamos en una lista
             List<Turno> turnos = dao.traerTodosLosTurnos();
@@ -38,10 +48,10 @@ public class TurnoABM {
             // Creamos un turno nuevo
             Turno turno = new Turno(fecha, hora, estado, cliente, empleado, servicio, sucursal);
 
-            // Verificamos si ya hay un turno reservado para ese servicio en esa misma fecha y hora
-            if (dao.existeTurnoEnFechaYHoraYServicio(fecha, hora, servicio))
+            // Verificamos si ya hay un turno reservado para ese servicio en esa misma fecha, hora y sucursal
+            if (dao.existeTurnoEnFechaHoraServicioYSucursal(fecha, hora, servicio, sucursal))
                 throw new Exception("Ya existe una reserva para '" + servicio.getNombre() + "' el día " + fecha
-                        + " a las " + hora + ".");
+                        + " a las " + hora + " en la sucursal " + sucursal.getNombre() + ".");
 
             // Verificamos si el cliente ya tiene un turno reservado para esa fecha y hora
             if (dao.clienteTieneTurnoEnFechaYHora(cliente, fecha, hora))
@@ -63,10 +73,10 @@ public class TurnoABM {
         // Verificamos si el turno es nulo, de ser así, lanzamos una excepción
         if (turno == null) throw new Exception("El turno no puede ser nulo.");
 
-        // Verificamos si ya hay un turno reservado para ese servicio en esa misma fecha y hora
-        if (dao.existeTurnoEnFechaYHoraYServicio(turno.getFecha(), turno.getHora(), turno.getServicio()))
+        // Verificamos si ya hay un turno reservado para ese servicio en esa misma fecha, hora y sucursal
+        if (dao.existeTurnoEnFechaHoraServicioYSucursal(turno.getFecha(), turno.getHora(), turno.getServicio(), turno.getSucursal()))
             throw new Exception("Ya existe una reserva para '" + turno.getServicio().getNombre() + "' el dia " + turno.getFecha()
-                    + " a las " + turno.getHora() + ".");
+                    + " a las " + turno.getHora() + " en la sucursal " + turno.getSucursal().getNombre() + ".");
 
         // Verificamos si el cliente ya tiene un turno reservado para esa fecha y hora
         if (dao.clienteTieneTurnoEnFechaYHora(turno.getCliente(), turno.getFecha(), turno.getHora()))
@@ -90,9 +100,9 @@ public class TurnoABM {
             // Verificamos si el turno es nulo, de ser así, lanzamos una excepción
             if (turno == null) throw new Exception("El turno no puede ser nulo.");
 
-            // Verificamos si ya existe un turno con la misma fecha, hora y servicio
-            if (dao.existeTurnoEnFechaYHoraYServicio(fechaNueva, horaNueva, turno.getServicio()))
-                throw new Exception("Ya existe una reserva para ese servicio el dia " + fechaNueva + " a las " + horaNueva + ".");
+            // Verificamos si ya existe un turno con la misma fecha, hora, servicio y sucursal
+            if (dao.existeTurnoEnFechaHoraServicioYSucursal(fechaNueva, horaNueva, turno.getServicio(), turno.getSucursal()))
+                throw new Exception("Ya existe una reserva para ese servicio el dia " + fechaNueva + " a las " + horaNueva + " en la sucursal " + turno.getSucursal().getNombre() + ".");
 
             // Una vez verificado todo, modificamos el turno con los nuevos valores
             turno.setFecha(fechaNueva);
