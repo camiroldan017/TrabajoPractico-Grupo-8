@@ -41,7 +41,7 @@ public class TestPersona {
         System.out.println("Creando un nuevo empleado...");
         
         long idEmpleado;
-
+        /* 
         try {
         idEmpleado = personaABM.agregarEmpleado("Sofia", "Lanceti", 19567890,
         Date.valueOf(LocalDate.of(1999, 10, 15)),contactoABM.traerContacto(5l),1, "A345",
@@ -113,6 +113,15 @@ public class TestPersona {
         // TODO Auto-generated catch block
         System.out.println(e.getMessage());
         }
-     */   
+     */ 
+        try {
+            System.out.println(personaABM.traerPersonaYContactoPorId(10l));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            System.out.println(e.getMessage());
+        }
+    
+
+
     }
 }

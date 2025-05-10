@@ -127,6 +127,10 @@ public class PersonaABM {
         return dao.traerEmpleadoPorId(idEmpleado);
     }
 
+    public Persona traerPersonaYContactoPorId(long idEmpleado) {
+        return dao.traerPersonaYContactoPorId(idEmpleado);
+    }
+
     public Cliente traerCliente(long idCliente) {
         return dao.traerClientePorId(idCliente);
     }
