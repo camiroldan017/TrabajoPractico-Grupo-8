@@ -23,7 +23,7 @@ public class Servicio {
     public long getIdServicio() {
         return idServicio;
     }
-    public void setIdServicio(long idServicio) {
+    protected void setIdServicio(long idServicio) {
         this.idServicio = idServicio;
     }
     public String getNombre() {

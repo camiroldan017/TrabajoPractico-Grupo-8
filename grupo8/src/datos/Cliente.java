@@ -19,7 +19,7 @@ public class Cliente extends Persona {
     public long getIdCliente() {
         return idCliente;
     }
-    public void setIdCliente(int idCliente) {
+    protected void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
