@@ -24,7 +24,7 @@ public class Persona {
     public long getIdPersona() {
         return idPersona;
     }
-    public void setIdPersona(long idPersona) {
+    protected void setIdPersona(long idPersona) {
         this.idPersona = idPersona;
     }
     public String getNombre() {

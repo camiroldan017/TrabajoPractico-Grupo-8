@@ -28,7 +28,7 @@ public class Sucursal {
         return idSucursal;
     }
 
-    public void setIdSucursal(long idSucursal) {
+    protected void setIdSucursal(long idSucursal) {
         this.idSucursal = idSucursal;
     }
 
