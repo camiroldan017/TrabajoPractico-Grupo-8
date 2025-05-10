@@ -7,7 +7,6 @@ import datos.Cliente;
 import datos.Contacto;
 import datos.Empleado;
 import datos.Persona;
-import datos.Sucursal;
 
 import java.util.List;
 
@@ -39,18 +38,6 @@ public class PersonaDao {
     public List<Persona> traerTodasLasPersonas() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Persona", Persona.class).list();
-        }
-    }
-
-    public List<Empleado> traerTodosLosEmpleados() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from Empleado", Empleado.class).list();
-        }
-    }
-
-    public List<Cliente> traerTodosLosClientes() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from Cliente", Cliente.class).list();
         }
     }
 
@@ -139,7 +126,18 @@ public class PersonaDao {
             session.close();
         }
         return empleado;
+    }
 
+    public Persona traerPersonaYContactoPorId(long idPersona) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Persona persona = null;
+        try {
+            persona = session.createQuery("from Persona p left join fetch p.contacto where p.idPersona = :idPersona", Persona.class)
+                    .setParameter("idPersona", idPersona).uniqueResult();
+        } finally {
+            session.close();
+        }
+        return persona;        
     }
 
 }

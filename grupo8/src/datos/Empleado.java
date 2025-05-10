@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class Empleado extends Persona {
     private long idEmpleado;
-    private int nroEmpleado;
     private String legajo;
     private Sucursal sucursal;
     private Set<Turno> turnos;
@@ -15,14 +14,13 @@ public class Empleado extends Persona {
         super();
     }
 
-    public Empleado(String nombre, String apellido, int dni, Date fechaNacimiento, Contacto contacto, int nroEmpleado, String legajo, Sucursal sucursal) {
+    public Empleado(String nombre, String apellido, int dni, Date fechaNacimiento, Contacto contacto, String legajo, Sucursal sucursal) {
         super(nombre, apellido, dni, fechaNacimiento, contacto);
-        this.nroEmpleado = nroEmpleado;
         this.legajo = legajo;
         this.sucursal = sucursal;
     }
 
-    public long IdEmpleado() {
+    public long getIdEmpleado() {
         return idEmpleado;
     }
     protected void setIdEmpleado(long idEmpleado) {
@@ -34,12 +32,7 @@ public class Empleado extends Persona {
     public void setLegajo(String legajo) {
         this.legajo = legajo;
     }
-    public int getNroEmpleado() {
-        return nroEmpleado;
-    }
-    public void setNroEmpleado(int nroEmpleado) {
-        this.nroEmpleado = nroEmpleado;
-    }
+
     public Sucursal getSucursal() {
         return sucursal;
     }

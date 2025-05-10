@@ -2,7 +2,6 @@ package negocio;
 
 import dao.ContactoDao;
 import datos.Contacto;
-import datos.Persona;
 import java.util.List;
 
 public class ContactoABM {

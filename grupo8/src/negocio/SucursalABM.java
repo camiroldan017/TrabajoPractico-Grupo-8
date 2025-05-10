@@ -1,7 +1,6 @@
 package negocio;
 
 import dao.SucursalDao;
-import datos.Contacto;
 import datos.Sucursal;
 import datos.Servicio;
 import java.util.List;

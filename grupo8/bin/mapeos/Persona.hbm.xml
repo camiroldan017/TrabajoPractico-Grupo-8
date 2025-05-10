@@ -11,8 +11,12 @@
 		<property column="dni" name="dni" type="int" />
 		<property column="fechaNacimiento" name="fechaNacimiento" type="date" />
 
+        <many-to-one name="contacto" class="datos.Contacto" cascade="save-update" column="idContacto" unique= "true"
+            foreign-key="fk_persona_contacto" />
+
         <joined-subclass name="datos.Cliente" table="cliente">
             <key column="idCliente"/>
+            <property column="nroCliente" name= "nroCliente" type="int"/>
             <set name="turnos" inverse="true" cascade="all">
                 <key column="idCliente"/>
                 <one-to-many class="datos.Turno"/>
@@ -34,6 +38,7 @@
                 <many-to-many class="datos.Servicio" column="idServicio"/>
             </set>
         </joined-subclass>
+
         
 	</class>
 </hibernate-mapping>
