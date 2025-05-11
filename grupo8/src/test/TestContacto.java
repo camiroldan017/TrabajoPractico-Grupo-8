@@ -6,14 +6,25 @@ import negocio.ContactoABM;
 public class TestContacto {
     public static void main(String[] args) {
         ContactoABM contactoABM = new ContactoABM();
-    
+       
+
+        //probamos excepcion lista vacia
+        try {
+            System.out.println("\nLista de contactos:" + contactoABM.traerContactos());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+      System.out.println("Creando contactos...");
         try{
             Contacto contacto = new Contacto ("sofia@gmail.com", "1134231577", "Calle Laguna 555");
              contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+        
         try{
             Contacto contacto = new Contacto ("marcelo123@gmail.com", "1154856955", " Av. libertador 123");
              contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
@@ -63,7 +74,42 @@ public class TestContacto {
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        //contacto para eliminar
+        try{
+            Contacto contacto = new Contacto ("FernandaAlarcon@gmail.com", "1122558778", "san juan 12");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+            
+
+
+        //intentamos agregar un mismo contacto para probar excepcion
+        try{
+            Contacto contacto = new Contacto ("sofia@gmail.com", "1134231577", "Calle Laguna 555");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Eliminar un contacto
+        try	 {
+            contactoABM.eliminarContacto(9L);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        //traemos todos los contactos agregados
+        try {
+            System.out.println("\nLista de contactos:" + contactoABM.traerContactos());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
+    
 
 
 }

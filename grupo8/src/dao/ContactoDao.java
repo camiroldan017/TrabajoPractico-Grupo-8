@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import datos.Contacto;
+import datos.Sucursal;
 
 
 public class ContactoDao {
@@ -67,18 +68,15 @@ public class ContactoDao {
 
 
     public void eliminarContacto(Contacto contacto) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.delete(contacto);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null)
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx = session.beginTransaction();
+            try {
+                session.delete(contacto);
+                tx.commit();
+            } catch (Exception e) {
                 tx.rollback();
-            throw e;
-        } finally {
-            session.close();
+                throw e;
+            }
         }
     }
 

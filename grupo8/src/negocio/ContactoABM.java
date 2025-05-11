@@ -2,6 +2,8 @@ package negocio;
 
 import dao.ContactoDao;
 import datos.Contacto;
+import datos.Turno;
+
 import java.util.List;
 
 public class ContactoABM {
@@ -12,8 +14,12 @@ public class ContactoABM {
         return dao.traerContactoPorId(idContacto);
     }
 
-    public List<Contacto> traerContactos() {
-        return dao.traerTodosLosContactos();
+    public List<Contacto> traerContactos() throws Exception {
+            // Traemos todos los contactos de la base de datos y los guardamos en una lista
+            List<Contacto> contactos = dao.traerTodosLosContactos();
+            // Si la lista de contactos está vacía, lanzamos una excepción
+            if (contactos.isEmpty()) throw new Exception("\nNo hay contactos registrados.\n");
+            return contactos;
     }
 
     public long agregarContacto(String email, String telefono, String direccion) throws Exception {
@@ -31,8 +37,15 @@ public class ContactoABM {
     }
 
     public void eliminarContacto(long idContacto) throws Exception {
-        Contacto contacto = dao.traerContactoPorId(idContacto);
-        if (contacto != null)  throw new Exception("Contacto no encontrado con id: " + idContacto);
-            dao.eliminarContacto(contacto);
-    }
+        // Traemos el contacto por su ID desde la base de datos
+        Contacto contacto= dao.traerContactoPorId(idContacto);
+        
+        // Verificamos si el contacto existe
+        if (contacto == null) throw new Exception("El turno a eliminar ID: " + idContacto + " no existe.");
+
+        // Si existe, lo eliminamos 
+        dao.eliminarContacto(contacto);
+        System.out.println("El turno con ID " + idContacto + " fue eliminado.");
+}
+    
 }
