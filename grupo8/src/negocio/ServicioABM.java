@@ -27,7 +27,7 @@ public class ServicioABM {
 
         if (lista == null || lista.isEmpty()) {
             // Si la lista de servicios está vacía, lanzamos una excepción
-            throw new Exception ("No hay servicios registrados.");
+            throw new Exception ("\nNo hay servicios registrados.");
         }
         return dao.traerTodosLosServicios();
     }
@@ -53,7 +53,7 @@ public class ServicioABM {
         
         // Guardamos el servicio en la base de datos
         dao.guardarServicio(servicio);
-        System.out.println("El servicio se ha guardado correctamente: " + servicio);
+        System.out.println("\nEl servicio se ha guardado correctamente: " + servicio);
         return servicio.getIdServicio();
     }
 
