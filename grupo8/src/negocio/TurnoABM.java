@@ -45,9 +45,6 @@ public class TurnoABM {
 
     public long agregarTurno(Date fecha, LocalTime hora, String estado, Cliente cliente, Empleado empleado,
             Servicio servicio, Sucursal sucursal) throws Exception {
-            // Creamos un turno nuevo
-            Turno turno = new Turno(fecha, hora, estado, cliente, empleado, servicio, sucursal);
-
             // Verificamos si ya hay un turno reservado para ese servicio en esa misma fecha, hora y sucursal
             if (dao.existeTurnoEnFechaHoraServicioYSucursal(fecha, hora, servicio, sucursal))
                 throw new Exception("Ya existe una reserva para '" + servicio.getNombre() + "' el día " + fecha
@@ -61,7 +58,9 @@ public class TurnoABM {
             if (dao.empleadoTieneTurnoAsignadoEnFechaYHora(empleado, fecha, hora))
                 throw new Exception("El empleado ya tiene un turno asignado para el dia " + fecha + " a las " + hora + ".");
 
-            // Una vez verificado todo, guardamos el turno
+            // Una vez verificado todo, creamos un turno nuevo
+            Turno turno = new Turno(fecha, hora, estado, cliente, empleado, servicio, sucursal);
+            // Guardamos el turno
             dao.guardarTurno(turno);
             // Imprimimos un mensaje confirmando que el turno se guardó correctamente,
              // junto con los detalles del turno.
