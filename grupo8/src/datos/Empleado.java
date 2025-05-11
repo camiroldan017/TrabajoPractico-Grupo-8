@@ -53,6 +53,6 @@ public class Empleado extends Persona {
     }
     @Override
     public String toString() {
-        return "Empleado: " + super.toString() + "[Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", DNI=" + getDni() + ", Fecha de Nacimiento=" + getFechaNacimiento() + ", Legajo=" + legajo + ", Contacto="+ getContacto()  + "]";
+        return "Empleado: " + super.toString() + "[Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", DNI=" + getDni() + ", Fecha de Nacimiento=" + getFechaNacimiento() + ", Legajo=" + legajo + ", Contacto="+ getContacto()  + "]\n";
     }
 }

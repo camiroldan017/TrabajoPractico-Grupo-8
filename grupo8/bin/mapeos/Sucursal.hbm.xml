@@ -8,9 +8,8 @@
         </id>
 
         <property name="nombre" column="nombre" type="string" />
-
-        <one-to-one name="contacto" class="datos.Contacto" cascade="all" constrained="false"
-            foreign-key="fk_sucursal_contacto" />
+        <property name="direccion" column="direccion" type="string" />
+        <property name="telefono" column="telefono" type="string" />
 
         <set name="empleados" inverse="true" cascade="all">
             <key column="idSucursal" not-null="false" />

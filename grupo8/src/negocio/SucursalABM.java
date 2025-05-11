@@ -25,7 +25,7 @@ public class SucursalABM {
 
         if(lista == null || lista.isEmpty()) {
             // Si la lista de sucursales está vacía, lanzamos una excepción
-            throw new Exception("No hay sucursales registradas.");
+            throw new Exception("\nNo hay sucursales registradas.\n");
         }
         return dao.traerTodasLasSucursales();
     }
@@ -43,7 +43,7 @@ public class SucursalABM {
         dao.guardarSucursal(sucursal);
 
         // Verificamos si la sucursal se guardó correctamente
-        System.out.println("La sucursal se ha guardado correctamente: " + sucursal);
+        System.out.println("\n\nLa sucursal se ha guardado correctamente: " + sucursal);
         return sucursal.getIdSucursal();
     }
 
@@ -88,7 +88,7 @@ public class SucursalABM {
         //Se realiza la actualización de la sucursal en la base de datos
         dao.actualizarSucursal(sucursal);
 
-        System.out.println("La sucursal se ha modificado correctamente: " + sucursal);
+        System.out.println("\nLa sucursal se ha modificado correctamente: " + sucursal);
     }
 
     public void eliminarSucursal(long idSucursal) {

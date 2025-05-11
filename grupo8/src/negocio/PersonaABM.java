@@ -42,7 +42,7 @@ public class PersonaABM {
     }
     */
 
-    public void modificarPersona(Persona persona, String nombre, String apellido, int dni, Date fechaNacimiento)
+    public void modificarPersona(Persona persona, String nombre, String apellido, int dni, Date fechaNacimiento, Contacto contacto)
             throws Exception {
         Persona aux = traerPersona(persona.getIdPersona());
         if (nombre == null)
@@ -56,6 +56,7 @@ public class PersonaABM {
         aux.setApellido(apellido);
         aux.setDni(dni);
         aux.setFechaNacimiento(fechaNacimiento);
+        aux.setContacto(contacto);
         dao.actualizarPersona(aux);
     }
 
@@ -95,7 +96,7 @@ public class PersonaABM {
         return empleado.getIdPersona();
     }
 
-    public void modificarEmpleado(String nombre, String apellido, int dni, Date fechaNacimiento,Contacto contacto, int nroEmpleado, String legajo,
+    public void modificarEmpleado(String nombre, String apellido, int dni, Date fechaNacimiento,Contacto contacto, String legajo,
             Sucursal sucursal) throws Exception {
         Persona personaAux = traerPersonaPorDni(dni);
         if (nombre == null)

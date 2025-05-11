@@ -11,7 +11,7 @@
 		<property column="dni" name="dni" type="int" />
 		<property column="fechaNacimiento" name="fechaNacimiento" type="date" />
 
-        <many-to-one name="contacto" class="datos.Contacto" cascade="save-update" column="idContacto" unique= "true"
+        <many-to-one name="contacto" class="datos.Contacto" cascade="save-update" column="idContacto" lazy="false" unique= "true"
             foreign-key="fk_persona_contacto" />
 
         <joined-subclass name="datos.Cliente" table="cliente">

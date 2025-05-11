@@ -37,7 +37,7 @@ public class PersonaDao {
 
     public List<Persona> traerTodasLasPersonas() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from Persona", Persona.class).list();
+            return session.createQuery("FROM Persona p LEFT JOIN FETCH p.contacto", Persona.class).list();
         }
     }
 
@@ -136,12 +136,14 @@ public class PersonaDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Persona persona = null;
         try {
-            persona = session.createQuery("from Persona p left join fetch p.contacto where p.idPersona = :idPersona", Persona.class)
+            persona = session
+                    .createQuery("from Persona p left join fetch p.contacto where p.idPersona = :idPersona",
+                            Persona.class)
                     .setParameter("idPersona", idPersona).uniqueResult();
         } finally {
             session.close();
         }
-        return persona;        
+        return persona;
     }
 
 }
