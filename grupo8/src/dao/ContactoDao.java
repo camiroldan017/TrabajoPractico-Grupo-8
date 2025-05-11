@@ -2,8 +2,16 @@ package dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.sql.Date;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
+
 import datos.Contacto;
+import datos.Servicio;
+import datos.Sucursal;
+import datos.Turno;
 
 
 public class ContactoDao {
@@ -62,6 +70,7 @@ public class ContactoDao {
         }
     }
 
+
     public void eliminarContacto(Contacto contacto) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -75,6 +84,20 @@ public class ContactoDao {
             throw e;
         } finally {
             session.close();
+        }
+    }
+
+    public boolean existeContacto(String email, String telefono, String direccion) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            String hql = "FROM Contacto c WHERE c.email = :email AND c.telefono = :telefono AND c.direccion = :direccion ";
+            Optional<Contacto> resultado = session
+                    .createQuery(hql, Contacto.class)
+                    .setParameter("email", email)
+                    .setParameter("telefono", telefono)
+                    .setParameter("direccion", direccion)
+
+                    .uniqueResultOptional();
+            return resultado.isPresent();
         }
     }
 }

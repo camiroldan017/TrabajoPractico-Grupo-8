@@ -67,6 +67,10 @@ public class PersonaDao {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
+            if (persona.getContacto() != null && persona.getContacto().getIdContacto() != 0) {
+                Contacto contacto = session.get(Contacto.class, persona.getContacto().getIdContacto());
+                persona.setContacto(contacto);
+            }
             session.update(persona);
             tx.commit();
         } catch (Exception e) {

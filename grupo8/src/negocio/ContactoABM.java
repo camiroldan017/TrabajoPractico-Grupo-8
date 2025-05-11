@@ -17,6 +17,7 @@ public class ContactoABM {
     }
 
     public long agregarContacto(String email, String telefono, String direccion) throws Exception {
+        if(dao.existeContacto(email, telefono, direccion)) throw new Exception ("Ya existe contacto con los datos ingresados");
         Contacto contacto = new Contacto(email, telefono, direccion);
         dao.guardarContacto(contacto);
         return contacto.getIdContacto();

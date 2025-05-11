@@ -30,7 +30,7 @@ public class TurnoABM {
 
             // Si el turno es nulo, lanzamos una excepción
             if (turno == null) throw new Exception("No se ha reservado ningún turno para '" + servicio.getNombre() + "' el día " + fecha
-                    + " a las " + hora + " en la sucursal " + sucursal.getNombre() + ".");
+                    + " a las " + hora + " en la sucursal '" + sucursal.getNombre() + "'.");
             return turno;
     }
 
@@ -39,7 +39,7 @@ public class TurnoABM {
             List<Turno> turnos = dao.traerTodosLosTurnos();
 
             // Si la lista de turnos está vacía, lanzamos una excepción
-            if (turnos.isEmpty()) throw new Exception("\nNo hay turnos registrados.");
+            if (turnos.isEmpty()) throw new Exception("\nNo hay turnos registrados.\n");
             return turnos;
     }
 
@@ -102,7 +102,7 @@ public class TurnoABM {
 
             // Verificamos si ya existe un turno con la misma fecha, hora, servicio y sucursal
             if (dao.existeTurnoEnFechaHoraServicioYSucursal(fechaNueva, horaNueva, turno.getServicio(), turno.getSucursal()))
-                throw new Exception("Ya existe una reserva para ese servicio el dia " + fechaNueva + " a las " + horaNueva + " en la sucursal " + turno.getSucursal().getNombre() + ".");
+                throw new Exception("Ya existe una reserva para ese servicio el dia " + fechaNueva + " a las " + horaNueva + " en esa sucursal.");
 
             // Una vez verificado todo, modificamos el turno con los nuevos valores
             turno.setFecha(fechaNueva);

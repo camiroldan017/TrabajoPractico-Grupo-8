@@ -6,13 +6,49 @@ import negocio.ContactoABM;
 public class TestContacto {
     public static void main(String[] args) {
         ContactoABM contactoABM = new ContactoABM();
-    
+       
         try{
-            Contacto contacto = new Contacto ("Sofia@gmail.com", "1234231577", "Calle Laguna 555");
+            Contacto contacto = new Contacto ("sofia@gmail.com", "1134231577", "Calle Laguna 555");
              contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        try{
+            Contacto contacto = new Contacto ("marcelo123@gmail.com", "1154856955", " Av. libertador 123");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try{
+            Contacto contacto = new Contacto ("Catalina12@gmail.com", "1188857844", "9 de julio 2578");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try{
+            Contacto contacto = new Contacto ("juanjose0@gmail.com", "1157896985", "Av. Pavon 5021");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        } 
+        
+
+        try{
+            Contacto contacto = new Contacto ("camila@gmail.com", "1157891111", "Monteverde 2020");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        } 
+
+        try{
+            Contacto contacto = new Contacto ("micaInsfran@gmail.com", "1157345866", "Cascadas 21");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        } 
     
     }
 

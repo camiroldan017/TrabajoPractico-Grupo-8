@@ -84,8 +84,7 @@ public class Sucursal {
 
     @Override
     public String toString() {
-        return "Sucursal{" +
-                "idSucursal=" + idSucursal +", nombre='" + nombre + '\'' + ", direccion='" + direccion + 
-                '\'' +", telefono='" + telefono  +'}';
+        return  "Sucursal [idSucursal= "  +  idSucursal  +  ",  nombre= "  +  nombre  +  ",  direccion= "  +  direccion  +  
+                ",  telefono= "  +  telefono   +  "]\n"; 
     }
 }

@@ -19,12 +19,21 @@ public class TestTurno {
         ServicioABM servicioABM = new ServicioABM();
         SucursalABM sucursalABM = new SucursalABM();
 
+        // Mostramos la lista de turnos vacía
+        try {
+            System.out.println("\nLISTA DE TURNOS:\n" + turnoABM.traerTurnos());
+        } catch (Exception e) {
+            // TODO: handle exception
+            // Manejamos la excepción y mostramos un mensaje en consola
+            System.out.println(e.getMessage());
+        }
+
         // Creamos 4 turnos y los agregamos a la BD
         // Turno 1
         try {
-            Turno turno1 = new Turno(Date.valueOf(LocalDate.of(2025, 6, 10)), LocalTime.of(10, 00, 00), "confirmado",
-            personaABM.traerCliente(6L), personaABM2.traerEmpleado(5L), servicioABM.traerServicio(1L),
-            sucursalABM.traerSucursal(2L));
+            Turno turno1 = new Turno(Date.valueOf(LocalDate.of(2026, 6, 10)), LocalTime.of(10, 00, 00), "confirmado",
+            personaABM.traerCliente(1L), personaABM2.traerEmpleado(5L), servicioABM.traerServicio(1L),
+            sucursalABM.traerSucursal(1L));
             turnoABM.agregarTurno(turno1);
         } catch (Exception e) {
             // TODO: handle exception
@@ -34,9 +43,9 @@ public class TestTurno {
 
         // Turno 2
         try {
-            Turno turno2 = new Turno(Date.valueOf(LocalDate.of(2025, 7, 23)), LocalTime.of(14, 30, 00), "confirmado",
-            personaABM.traerCliente(7L), personaABM2.traerEmpleado(5L), servicioABM.traerServicio(2L),
-            sucursalABM.traerSucursal(2L));
+            Turno turno2 = new Turno(Date.valueOf(LocalDate.of(2026, 7, 23)), LocalTime.of(14, 30, 00), "confirmado",
+            personaABM.traerCliente(2L), personaABM2.traerEmpleado(5L), servicioABM.traerServicio(2L),
+            sucursalABM.traerSucursal(1L));
             turnoABM.agregarTurno(turno2);
         } catch (Exception e) {
             // TODO: handle exception
@@ -46,9 +55,9 @@ public class TestTurno {
 
         // Turno 3
         try {
-            Turno turno3 = new Turno(Date.valueOf(LocalDate.of(2025, 8, 17)), LocalTime.of(18, 45, 00), "confirmado",
-            personaABM.traerCliente(8L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(3L),
-            sucursalABM.traerSucursal(2L));
+            Turno turno3 = new Turno(Date.valueOf(LocalDate.of(2026, 8, 17)), LocalTime.of(18, 45, 00), "confirmado",
+            personaABM.traerCliente(3L), personaABM2.traerEmpleado(6L), servicioABM.traerServicio(3L),
+            sucursalABM.traerSucursal(1L));
             turnoABM.agregarTurno(turno3);
         } catch (Exception e) {
             // TODO: handle exception
@@ -58,9 +67,9 @@ public class TestTurno {
 
         // Turno 4
         try {
-            Turno turno4 = new Turno(Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), "confirmado",
-            personaABM.traerCliente(8L), personaABM2.traerEmpleado(9L), servicioABM.traerServicio(2L),
-            sucursalABM.traerSucursal(2L));
+            Turno turno4 = new Turno(Date.valueOf(LocalDate.of(2026, 5, 1)), LocalTime.of(9, 15, 00), "confirmado",
+            personaABM.traerCliente(3L), personaABM2.traerEmpleado(6L), servicioABM.traerServicio(2L),
+            sucursalABM.traerSucursal(1L));
             turnoABM.agregarTurno(turno4);
         } catch (Exception e) {
             // TODO: handle exception
@@ -73,9 +82,9 @@ public class TestTurno {
         // Intentamos reservar un turno para un servicio que ya tiene un turno reservado para la fecha
         // y hora que se desea reservar
         try {
-            turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2025, 6, 10)), LocalTime.of(10, 00, 00), "pendiente",
-                personaABM.traerCliente(13L), personaABM2.traerEmpleado(17L), servicioABM.traerServicio(3L),
-                sucursalABM.traerSucursal(11L));
+            turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2026, 6, 10)), LocalTime.of(10, 00, 00), "pendiente",
+                personaABM.traerCliente(7L), personaABM2.traerEmpleado(6L), servicioABM.traerServicio(1L),
+                sucursalABM.traerSucursal(1L));
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
@@ -85,9 +94,9 @@ public class TestTurno {
         // Intentamos reservar un turno para un cliente que ya tiene un turno reservado para otro
         // servicio en la fecha y hora que desea reservar
         try {
-            turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2025, 7, 23)), LocalTime.of(14, 30, 00), "pendiente",
-                personaABM.traerCliente(14L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(3L),
-                sucursalABM.traerSucursal(11L));
+            turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2026, 7, 23)), LocalTime.of(14, 30, 00), "pendiente",
+                personaABM.traerCliente(2L), personaABM2.traerEmpleado(6L), servicioABM.traerServicio(3L),
+                sucursalABM.traerSucursal(1L));
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
@@ -97,9 +106,9 @@ public class TestTurno {
         // Intentamos reservar un turno asignandole un empleado que ya tiene un turno asignado
         // para esa fecha y hora
         try {
-            turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2025, 8, 17)), LocalTime.of(18, 45, 00), "pendiente",
-                personaABM.traerCliente(13L), personaABM2.traerEmpleado(18L), servicioABM.traerServicio(4L),
-                sucursalABM.traerSucursal(11L));
+            turnoABM.agregarTurno(Date.valueOf(LocalDate.of(2026, 8, 17)), LocalTime.of(18, 45, 00), "pendiente",
+                personaABM.traerCliente(1L), personaABM2.traerEmpleado(6L), servicioABM.traerServicio(4L),
+                sucursalABM.traerSucursal(1L));
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
@@ -124,9 +133,9 @@ public class TestTurno {
             System.out.println("\nERROR AL BUSCAR TURNO: " + e.getMessage());
         }
 
-        // Buscamos un turno que no existe
+        // Buscamos  un  turno  por  su  fecha,  hora,  servicio  y  sucursal 
         try {
-            turnoABM.traerTurno(Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), servicioABM.traerServicio(2L), sucursalABM.traerSucursal(2L));
+            turnoABM.traerTurno(Date.valueOf(LocalDate.of(2026, 5, 1)), LocalTime.of(9, 15, 00), servicioABM.traerServicio(2L), sucursalABM.traerSucursal(1L));
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
@@ -135,7 +144,7 @@ public class TestTurno {
 
         // Modificamos el turno con ID 1
         try {
-            turnoABM.modificarTurno(turnoABM.traerTurno(1L), Date.valueOf(LocalDate.of(2025, 9, 5)), LocalTime.of(07, 15, 00), "confirmado");
+            turnoABM.modificarTurno(turnoABM.traerTurno(1L), Date.valueOf(LocalDate.of(2026, 9, 5)), LocalTime.of(07, 15, 00), "confirmado");
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
@@ -144,7 +153,7 @@ public class TestTurno {
 
         // Intentamos modificar el turno con ID 2 para el mismo servicio que el turno 4 en la misma fecha y hora
         try {
-            turnoABM.modificarTurno(turnoABM.traerTurno(2L), Date.valueOf(LocalDate.of(2025, 5, 1)), LocalTime.of(9, 15, 00), "pendiente");
+            turnoABM.modificarTurno(turnoABM.traerTurno(2L), Date.valueOf(LocalDate.of(2026, 5, 1)), LocalTime.of(9, 15, 00), "pendiente");
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
@@ -169,19 +178,18 @@ public class TestTurno {
             System.out.println("\nERROR AL QUERER ELIMINAR EL TURNO: " + e.getMessage() + "\n");
         }
         
-        // Eliminamos todos los turnos
+        // Eliminamos dos turnos
         try {
             turnoABM.eliminarTurno(1L);
             turnoABM.eliminarTurno(2L);
-            turnoABM.eliminarTurno(3L);
-            turnoABM.eliminarTurno(4L);
+          
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola
             System.out.println("\nERROR AL QUERER ELIMINAR EL TURNO: " + e.getMessage());
         }
 
-        // Mostramos la lista de turnos vacía
+        // Mostramos la lista de turnos actualizada
         try {
             System.out.println("\nLISTA DE TURNOS:\n" + turnoABM.traerTurnos());
         } catch (Exception e) {
