@@ -10,7 +10,7 @@ claves para la eficiencia.</p>
   <ul>Java 21</ul>
 </p>
 <h2>Video Explicativo.</h2>
-<a link href>link al video<a/>
+<a href="https://drive.google.com/file/d/15zOLn6JWwa5OKZCcIcl6CzUsfW8OMr70/view?usp=sharing">Video Explicativo<a/>
 <h2>Como levantar el Proyecto</h2>
 <p>Clonar el repositorio de GitHub: <a link href>https://github.com/camiroldan017/TrabajoPractico-Grupo-8</a></p>
 <p>Configurar el ClassPath del proyecto Importando la librerias de hibernate necesarias : <a href="https://drive.google.com/drive/folders/1hXXRsBPUiKQqUrWJGvNIi4jWgvavh9Vk?usp=drive_link"> Carpeta de Librerias</a> </p>
