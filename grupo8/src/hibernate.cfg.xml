@@ -6,7 +6,11 @@
 		<property name="connection.url">
 			jdbc:mysql://localhost:3306/tp-grupo08-oo2?serverTimezone=GMT-3</property>
 		<property name="connection.username">root</property>
+<<<<<<< HEAD
 		<property name="connection.password">Mica345708.</property>
+=======
+		<property name="connection.password">Lucascardozo1975</property>
+>>>>>>> f6c73c61549a4f0fb470e050f598c35c830596db
 		<property name="connection.pool_size">1</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="show_sql">false</property><!-- en true muestra hql en consola-->

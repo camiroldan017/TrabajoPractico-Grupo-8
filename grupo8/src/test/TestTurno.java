@@ -135,7 +135,7 @@ public class TestTurno {
 
         // Buscamos  un  turno  por  su  fecha,  hora,  servicio  y  sucursal 
         try {
-            turnoABM.traerTurno(Date.valueOf(LocalDate.of(2026, 5, 1)), LocalTime.of(9, 15, 00), servicioABM.traerServicio(2L), sucursalABM.traerSucursal(1L));
+            System.out.println("\n" + turnoABM.traerTurno(Date.valueOf(LocalDate.of(2026, 5, 1)), LocalTime.of(9, 15, 00), servicioABM.traerServicio(2L), sucursalABM.traerSucursal(1L)));
         } catch (Exception e) {
             // TODO: handle exception
             // Manejamos la excepción y mostramos un mensaje en consola

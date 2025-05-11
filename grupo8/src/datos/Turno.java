@@ -40,7 +40,7 @@ public class Turno {
     public void setFecha(Date fecha) throws Exception {
         // Verificamos que la fecha ingresada no sea nula, de ser así, lanzamos una excepción
         if(fecha == null) throw new Exception("La fecha no puede ser nula.");
-        // Verificamos si la decha ingresada ya ha pasado, de ser así, lanzamos una excepción
+        // Verificamos si la fecha ingresada ya ha pasado, de ser así, lanzamos una excepción
         if(fecha.before(Date.valueOf(LocalDate.now()))) throw new Exception("La fecha ingresada ya ha pasado, y no es válida.");
         this.fecha = fecha;
     }

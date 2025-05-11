@@ -10,9 +10,6 @@
         <property column="email" name="email" type="string" />
         <property column="telefono" name="telefono" type="string" />
         <property column="direccion" name="direccion" type="string" />
-
-        <!-- Sucursal es quien posee la relación (constrained="true") -->
-        <one-to-one name="sucursal" class="datos.Sucursal" property-ref="contacto" />
     </class>
 
 </hibernate-mapping>
