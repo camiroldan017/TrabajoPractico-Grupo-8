@@ -3,15 +3,10 @@ package dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.sql.Date;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
 import datos.Contacto;
-import datos.Servicio;
-import datos.Sucursal;
-import datos.Turno;
 
 
 public class ContactoDao {

@@ -6,7 +6,7 @@ import negocio.ContactoABM;
 public class TestContacto {
     public static void main(String[] args) {
         ContactoABM contactoABM = new ContactoABM();
-       
+    
         try{
             Contacto contacto = new Contacto ("sofia@gmail.com", "1134231577", "Calle Laguna 555");
              contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
@@ -50,6 +50,19 @@ public class TestContacto {
             System.out.println(e.getMessage());
         } 
     
+        try{
+            Contacto contacto = new Contacto ("nico@gmail.com", "1157345999", "Caracas 120");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try{
+            Contacto contacto = new Contacto ("fede@gmail.com", "115325999", "Lima 100");
+             contactoABM.agregarContacto(contacto.getEmail(), contacto.getTelefono(), contacto.getDireccion()); // Guardar en la BD antes de usarla
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 

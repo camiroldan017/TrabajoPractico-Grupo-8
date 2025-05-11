@@ -8,9 +8,9 @@ public class TestServicio {
     public static void main(String[] args) {
         ServicioABM servicioABM = new ServicioABM();
         SucursalABM sucursalABM = new SucursalABM();
-         
+        
         try {
-         
+        
             long idServicio = servicioABM.agregarServicio("Depilacion", "30 minutos", sucursalABM.traerSucursal(1L));
             System.out.println("Servicio agregado con ID: " + idServicio);
             long idServicio2 = servicioABM.agregarServicio("Corte de pelo", "45 minutos", sucursalABM.traerSucursal(2L));
@@ -31,7 +31,7 @@ public class TestServicio {
             System.out.println(e.getMessage());
         }
         
-       
+    
         
         // Eliminar un servicio
         try	 {
