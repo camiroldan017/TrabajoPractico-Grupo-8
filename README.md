@@ -13,8 +13,8 @@ claves para la eficiencia.</p>
 <a link href>link al video<a/>
 <h2>Como levantar el Proyecto</h2>
 <p>Clonar el repositorio de GitHub: <a link href>https://github.com/camiroldan017/TrabajoPractico-Grupo-8</a></p>
-<p>Configurar el ClassPath del proyecto Importando la librerias de hibernate necesarias : <a link href> (https://drive.google.com/drive/folders/1hXXRsBPUiKQqUrWJGvNIi4jWgvavh9Vk?usp=drive_link)</a> </p>
-<p>Crear una base de datos local llamada: tp-grupo08-oo2</p>
+<p>Configurar el ClassPath del proyecto Importando la librerias de hibernate necesarias : <a href="https://drive.google.com/drive/folders/1hXXRsBPUiKQqUrWJGvNIi4jWgvavh9Vk?usp=drive_link"> Carpeta de Librerias</a> </p>
+<p>Crear una base de datos local llamada con el script: <a href="https://drive.google.com/drive/folders/1hXXRsBPUiKQqUrWJGvNIi4jWgvavh9Vk?usp=drive_link">script para la DB</a> </p>
 <p>Configurar el archivo hibernate.cfg.xml con el usuario y contraseña de su base de datos local.</p>
 <p>Abrir el proyecto y correr los test en orden: 
   <ol>1_ testContacto</ol>
